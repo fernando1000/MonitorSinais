@@ -1,0 +1,81 @@
+
+.nav-pills {
+  > li {
+    &:hover {
+      cursor: pointer;
+    }
+
+    > a {
+      transition: all 100ms ease-in-out;
+
+      &:hover {
+        color: @nav-pills-active-link-hover-color;
+      }
+    }
+
+    > .dropdown-toggle {
+      .caret {
+        border-color: @brand-primary;
+      }
+
+      &:hover {
+        .caret {
+          border-color: @nav-pills-active-link-hover-color;
+        }
+      }
+    }
+  }
+}
+
+.nav-pills:not(.nav-stacked) {
+  border-bottom: 1px solid @gray-dark;
+
+  > li {
+    > a {
+      color: @gray-dark;
+      transition: all 100ms ease-in-out;
+
+      &:hover {
+        color: @gray-dark;
+        background-color: transparent;
+        box-shadow: inset 0px -3px 0px 0px @gray-dark;
+      }
+    }
+
+    &.active > a {
+      color: @gray-base;
+      background-color: transparent;
+      box-shadow: inset 0px -3px 0px 0px @gray-dark;
+    }
+
+    &.disabled > a {
+      color: @gray-light;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  > li,
+  > li.active,
+  > li.disabled {
+    > a:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.nav-justified {
+  @media (min-width: 0) {
+    display: flex;
+    width: auto;
+
+    > li {
+      flex: 1 0 auto;
+      > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

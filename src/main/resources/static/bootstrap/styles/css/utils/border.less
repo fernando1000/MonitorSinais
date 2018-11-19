@@ -1,0 +1,30 @@
+/* Border */
+.border {
+
+  &-style-solid { border-style: solid !important}
+  
+  &-width,
+  &-size { // TODO remove "size" in v1.0
+    &-1 { border-width: 1px !important}
+    &-2 { border-width: 2px !important}
+    &-3 { border-width: 3px !important}
+  }
+
+  &-color {
+    &-base, &-darkest { border-color: @gray-base !important}
+    &-darker { border-color: @gray-darker !important }
+    &-dark { border-color: @gray-dark !important }
+    &-gray { border-color: @gray !important }
+    &-light { border-color: @gray-light !important }
+    &-lighter, .bg-muted { border-color: @gray-lighter !important }
+    &-lightest { border-color: @gray-lightest !important }
+    &-white { border-color: #ffffff !important}
+    &-highlight { border-color: @color-highlight !important}
+  }
+
+  &-none { border: none none !important }
+  &-top-0 { border-top-style: none !important }
+  &-right-0 { border-right-style: none !important}
+  &-bottom-0 { border-bottom-style: none !important}
+  &-left-0 { border-left-style: none !important}
+}

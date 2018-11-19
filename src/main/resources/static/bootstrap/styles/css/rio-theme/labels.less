@@ -1,0 +1,72 @@
+// Labels and their color variations
+.label {
+  padding: 4px 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: transparent;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  &-condensed {
+    position: relative;
+    top: -1px;
+    padding: 1px 5px;
+  }
+
+  &-default {
+    color: @gray-dark;
+  }
+  &-default.label-filled {
+    color: #FFFFFF;
+    border-color: @gray-dark;
+    background-color: @gray-dark;
+  }
+
+  &-primary {
+    color: @brand-primary;
+  }
+  &-primary.label-filled {
+    color: #FFFFFF;
+    border-color: @brand-primary;
+    background-color: @brand-primary;
+  }
+
+  &-info {
+    color: @state-info-text;
+  }
+  &-info.label-filled {
+    color: #FFFFFF;
+    border-color: @state-info-text;
+    background-color: @state-info-text;
+  }
+
+  &-success {
+    color: @brand-success;
+  }
+  &-success.label-filled {
+    color: #FFFFFF;
+    border-color: @brand-success;
+    background-color: @brand-success;
+  }
+
+  &-warning {
+    color: @state-warning-text;
+  }
+  &-warning.label-filled {
+    color: #FFFFFF;
+    border-color: @state-warning-text;
+    background-color: @state-warning-text;
+  }
+
+  &-danger {
+    color: @state-danger-text;
+  }
+  &-danger.label-filled {
+    color: #FFFFFF;
+    border-color: @state-danger-text;
+    background-color: @state-danger-text;
+  }
+}

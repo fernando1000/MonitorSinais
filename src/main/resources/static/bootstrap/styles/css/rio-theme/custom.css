@@ -1,0 +1,247 @@
+.aside .ObjectTree {
+  background: #343d4b;
+  height: calc(50vh);
+  max-width: 350px;
+  position: relative;
+  width: 350px;
+}
+.aside .ObjectTree.collapsed {
+  cursor: pointer;
+  transition-duration: 0;
+  transition-delay: 0;
+  background: #000000;
+  width: 50px;
+}
+.aside .ObjectTree.collapsed .Navigation {
+  transition-duration: 0;
+  height: calc(50vh);
+}
+.aside .ObjectTree.collapsed .Navigation .nav-list-item {
+  display: block;
+}
+.aside .ObjectTree.collapsed .Navigation .close-button {
+  display: none;
+}
+.aside .ObjectTree .TreeBody {
+  margin-top: 50px;
+  position: absolute;
+}
+.aside .ObjectTree .Navigation {
+  background: #000000;
+  overflow: hidden;
+  position: absolute;
+  min-height: 50px;
+  height: 50px;
+  width: 350px;
+  display: flex;
+}
+.aside .ObjectTree .Navigation .close-button {
+  background: none;
+  border: 0px;
+  color: #a7afbb;
+  font-size: 20px;
+  font-weight: normal;
+  height: 50px;
+  right: 0px;
+  top: 0px;
+  width: 50px;
+  float: right;
+}
+.aside .ObjectTree .Navigation .nav-list {
+  font-size: 0px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+.aside .ObjectTree .Navigation .nav-list .nav-list-item {
+  color: #4c5567;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 25px;
+}
+.aside .ObjectTree .Navigation .nav-list .nav-list-item button {
+  color: #4c5567;
+  background: #000000;
+  border: 0px;
+  cursor: inherit;
+  display: block;
+  font-size: 25px;
+  line-height: 50px;
+  min-width: 50px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  text-align: center;
+}
+.aside .ObjectTree .Navigation .nav-list .nav-list-item.selected button {
+  background: #4c5667;
+  color: #e5ebf0;
+}
+.aside .ObjectTree .Navigation .nav-list .nav-list-item.selected button i {
+  font-size: 25px;
+}
+.aside .ObjectTree .SearchBar {
+  background: #4c5667;
+  height: 50px;
+  overflow: hidden;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+}
+.aside .ObjectTree .SearchBar .search-icon {
+  color: #ffffff;
+  cursor: default;
+  font-size: 18px;
+  height: 18px;
+  left: 11px;
+  margin-top: -9px;
+  position: absolute;
+  top: 50%;
+  width: 18px;
+}
+.aside .ObjectTree .SearchBar .search-input {
+  background: none;
+  border: 0px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: none;
+  outline: none;
+  padding: 13px 13px 13px 39px;
+  width: 100%;
+}
+.aside .ObjectTree .TreeContent {
+  align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  height: calc(-50vh);
+}
+.aside .ObjectTree .StaticGroups {
+  border-top: #1f242d 1px solid;
+  flex-grow: 1;
+  overflow: auto;
+  width: 350px;
+}
+.aside .ObjectTree .StaticGroups .group-item-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.aside .ObjectTree .StaticGroups .group-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item {
+  border-bottom: #1f242d 1px solid;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-header {
+  border-left: transparent 3px solid;
+  height: 50px;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label {
+  background: none;
+  border: 0;
+  border-left: transparent 3px solid;
+  color: #d0d8de;
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  padding: 17px 15px 17px 31px;
+  text-align: left;
+  width: 100%;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label .label-content {
+  display: flex;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label .label-content .icon {
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 0px;
+  vertical-align: top;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label .label-content .icon:first-child {
+  font-size: 18px;
+  width: 18px;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label .label-content div {
+  display: inline-block;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .group-item-label .label-content div .display-name {
+  flex-grow: 1;
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aside .ObjectTree .StaticGroups .group-list .group-list-item .selected .group-item-label {
+  border-left-color: #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+}
+.aside .ObjectTree .StaticGroups .group-header {
+  align-items: center;
+  color: #d0d8de;
+  display: flex;
+  padding-left: 4px;
+  padding-right: 15px;
+}
+.aside .ObjectTree .StaticGroups .group-header > .icon {
+  background: none;
+  border: 0px;
+  margin-right: 6px;
+  outline: none;
+  padding: 6px;
+}
+.aside .ObjectTree .StaticGroups .group-header .icon {
+  font-size: 16px;
+}
+.aside .ObjectTree .StaticGroups .group-header .group-header-label {
+  background: none;
+  border: 0px;
+  flex-shrink: 1;
+  font-size: 16px;
+  height: 50px;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+}
+.aside .ObjectTree .StaticGroups .group-header .group-header-label .label-content {
+  display: flex;
+}
+.aside .ObjectTree .StaticGroups .group-header .group-header-label .label-content .display-name {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aside .ObjectTree .StaticGroups .group-header .item-count {
+  display: inline-block;
+  margin-left: 4px;
+}
+.ApplicationLayoutBody .module-content {
+  position: relative;
+  height: 100%;
+  padding: 30px;
+  margin: 0;
+  overflow: auto;
+  background-color: #E5EBF0;
+}
+/*painel de alertas*/
+.container-alerts .list-alerts {
+  margin: 0;
+  padding: 0;
+}
+.container-alerts .list-alerts .list-alerts-item {
+  display: inline-block;
+  text-align: center;
+  width: 33%;
+}
+.container-alerts .list-alerts .list-alerts-item .list-alerts-item {
+  vertical-align: top;
+}
+.container-alerts .list-alerts .list-alerts-item .list-alerts-item .alerts-type-square {
+  border: 1px solid #fff;
+}

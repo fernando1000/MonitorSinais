@@ -1,0 +1,196 @@
+// Forms
+
+/*
+ * Bootstrap variables
+ */
+// Formstates
+@state-warning-text: @brand-warning; //#EAA83F; //#c09853;
+@state-warning-bg: #fcf8e3;
+@state-warning-border: @brand-warning; //#EAA83F;
+@state-danger-text: @brand-danger; //#AF230D; //#b94a48;
+@state-danger-bg: #f2dede;
+@state-danger-border: @brand-danger; //#AF230D;
+@state-success-text: @brand-success; //#305F2C; //#468847;
+@state-success-bg: #dff0d8;
+@state-success-border: @brand-success; //#305F2C;
+@state-info-text: @brand-info; //#3a87ad;
+@state-info-bg: #d9edf7;
+@state-info-border: @brand-info;
+
+// Forms
+@input-bg: #fff;
+@input-bg-disabled: rgba(229, 235, 240, 0.4); //40% @gray-lighter;
+@input-color: @gray-darker;//@gray-base;
+@input-border: @gray;
+@input-border-radius: @border-radius-base;
+@input-border-focus: #66afe9;
+@input-color-placeholder: @gray;
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large: (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@legend-color: @gray-dark;
+@legend-border-color: #e5e5e5;
+@input-group-addon-bg: #ffffff;
+@input-group-addon-border-color: @input-border;
+
+.form-group {
+  label {
+    font-size: @font-size-small;
+    font-weight: normal;
+    color: @gray-dark;
+  }
+}
+
+.form-inline {
+  > .form-group:first-child {
+    margin-left: 0;
+  }
+  > .form-group:last-child {
+    margin-right: 0;
+  }
+  > .form-group {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  > .form-group > label {
+    margin-bottom: 0;
+  }
+}
+
+.form-control,
+.form-control:focus,
+.has-warning .form-control,
+.has-warning .form-control:focus,
+.has-error .form-control,
+.has-error .form-control:focus,
+.has-success .form-control,
+.has-success .form-control:focus {
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+
+// Increase font size for font icons
+.has-feedback label ~ .form-control-feedback {
+  font-size: 1.2em;
+}
+
+// Set label color to default even when when it has feedback
+.has-feedback > label,
+.has-feedback > .control-label,
+.has-warning > .control-label,
+.has-error > .control-label,
+.has-success > .control-label {
+  color: @gray-dark;
+}
+
+.input-group {
+  position: relative;;
+
+  > .input-group-addon {
+    color: @gray-dark;
+  }
+
+  .form-control {
+    z-index: 0;
+  }
+
+  > .input-group-addon {
+    &:first-child {
+      position: absolute;
+      z-index: 4;
+      left: 0;
+      background-color: transparent;
+      border: none;
+      padding: 9px 0px;
+      width: 32px;
+      text-align: center;
+
+      > .rioglyph {
+        font-size: 1.3em;
+      }
+    }
+
+    &:last-child {
+      padding-left: 0;
+      position: relative;
+      transform: translateX(-1px);
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      box-shadow: 1px 0 0 0 @input-border;
+      border-right: none;
+
+      .form-group.has-error & {
+        box-shadow: 1px 0 0 0 @brand-danger;
+      }
+      .form-group.has-warning & {
+        box-shadow: 1px 0 0 0 @brand-warning;
+      }
+      .form-group.has-success & {
+        box-shadow: 1px 0 0 0 @brand-success;
+      }
+
+      .form-group.has-feedback & {
+        background: @input-bg;
+      }
+    }
+  }
+
+  > .input-group-addon + .form-control {
+    padding-left: 30px;
+  }
+
+  .input-group-btn:first-child > .btn,
+  .input-group-btn:first-child > .btn-group {
+    margin-right: -2px;
+  }
+}
+
+.form-control {
+  &[disabled] {
+    + .input-group-addon:last-child {
+      background: #f5f7f9; // because @input-bg-disabled has alpha...
+      cursor: @cursor-disabled;
+    }
+  }
+  &:focus {
+    border-color: @gray-base;
+    
+    + .input-group-addon:last-child {
+      border-color: @gray-base;
+      box-shadow: 1px 0 0 0 @gray-base;
+      z-index: 3;
+
+      .form-group.has-error & {
+        border-color: darken(@brand-danger, 10%);
+        box-shadow: 1px 0 0 0 darken(@brand-danger, 10%);
+      }
+      .form-group.has-warning & {
+        border-color: darken(@brand-warning, 10%);
+        box-shadow: 1px 0 0 0 darken(@brand-warning, 10%);
+      }
+      .form-group.has-success & {
+        border-color: darken(@brand-success, 10%);
+        box-shadow: 1px 0 0 0 darken(@brand-success, 10%);
+      }
+    }
+  }
+}
+
+textarea.form-control {
+  min-height: @input-height-base;
+  resize: vertical;
+
+  &.input-sm {
+    min-height: @input-height-small;
+  }
+
+  &.input-lg {
+    min-height: @input-height-large;
+  }
+}
+
+.form-control::placeholder,
+.form-control::-webkit-input-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control::-ms-input-placeholder {
+  font-style: italic;
+}

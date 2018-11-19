@@ -1,0 +1,55 @@
+// Tabs
+
+/*
+ * Bootstrap variables
+ */
+@nav-link-padding: 10px 15px;
+@nav-link-hover-bg: @brand-primary;//@gray-light;
+@nav-disabled-link-color: @gray-light;
+@nav-disabled-link-hover-color: @gray-light;
+@nav-tabs-border-color: @gray;
+@nav-tabs-link-hover-border-color: @brand-primary;//@gray-light;
+@nav-tabs-active-link-hover-bg: @body-bg;
+@nav-tabs-active-link-hover-color: @gray-dark;
+@nav-tabs-active-link-hover-border-color: @gray;
+@nav-tabs-justified-link-border-color: @gray;
+@nav-tabs-justified-active-link-border-color: @body-bg;
+@nav-pills-border-radius: @border-radius-base;
+@nav-pills-active-link-hover-bg: @component-active-bg;
+@nav-pills-active-link-hover-color: #fff;
+
+.nav > li.disabled > a {
+  color: @gray-light;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+.nav-tabs > li.active > a {
+  color: @gray-base;
+}
+
+.nav-tabs > li > a:hover {
+  color: #ffffff;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid @gray;
+  transition: all 200ms ease-in-out;
+
+  > li > a {
+    color: @gray-dark;
+    transition: all 100ms ease-in-out;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.tab-content {
+  margin: 0;
+  padding: 15px;
+  background-color: #ffffff;
+  transition: all 200ms ease-in-out;
+}

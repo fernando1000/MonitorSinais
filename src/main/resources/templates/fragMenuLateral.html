@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+	<div th:fragment="fragConteudoMenuLateral" class="results-block">
+
+		<div class="TreeContent">
+        	<div class="StaticGroups">
+            	<ol id="listaDoMenu" class="group-list">
+                          
+							   <li th:id=" 'list'+ ${grupoQTD.nome}" class="group-list-item --expanded" th:each="grupoQTD : ${listaComGrupoQTD}">
+                                  <div class="group-header">
+                                      <button class="icon"  
+                                      		  th:onclick="'javascript:mostrarOcultarPorNomeGrupo(\'' + ${grupoQTD.nome} +'\');'">
+                                              <i class="rioglyph rioglyph-plus-light icon plus-light-icon"></i>
+                                      </button>
+                                      <button class="group-header-label" type="button" 
+                                      		  th:onclick="'javascript:procuraFrota(\'' + ${grupoQTD.nome} +'\');'">
+	                                          <div class="label-content">
+	                                              <span class="display-name" th:text="${grupoQTD.nome}"></span>
+	                                              <span class="item-count" th:text=" '('+${grupoQTD.qtd}+')' "></span>
+	                                          </div>
+	                                  </button>  
+	                                                                    
+                                  </div>
+                                  <ol th:id="${grupoQTD.nome}" class="group-item-list">
+                                      
+                                      <li class="group-item" th:id="${historico.plate}" th:each="historico : ${grupoQTD.listaComHistoricos}">
+                                              <button class="group-item-label" th:id=" 'button' + ${historico.plate}" type="button" 
+                                              	      th:onclick="'javascript:procuraPlaca(\''+ ${historico.plate} +'\',\''+ ${grupoQTD.nome} + '\');'">
+				
+                                                      <div class="label-content">
+                                                  	      <i aria-label="truck" class="rioglyph rioglyph-truck icon truck-icon"></i>
+                                                          <div>
+                                                               <span class="display-name" th:text="${historico.plate}"></span>
+                                                          </div>
+                                                      </div>
+                                              </button>
+                                      </li>
+				                      
+                                  </ol>
+                              </li>                              
+                          
+                </ol>
+            </div>
+        </div>
+
+	</div>
+
+</body>
+
+</html>

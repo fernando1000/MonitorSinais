@@ -1,0 +1,69 @@
+// Source Sans Pro:
+// Extra Light = 200
+// Light = 300
+// Regular = 400
+// Semi bold = 600
+// Bold = 700
+// Black = 900
+
+// Import 'Source Sans Pro' from google
+@import (css) url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,400italic,600,600italic,700italic&subset=latin,latin-ext,vietnamese);
+
+// Soure Sans Pro use for: all copytext
+@font-face {
+  font-family: 'Source Sans Pro script=all rev=2', Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'rioglyphregular';
+  src: url('/../../rioglyph.woff2') format('woff2'),
+       url('/../../rioglyph.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+// Fonts - Font Family
+@font-family-sans-serif: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
+
+// Fonts - Font Sizes 
+@font-size-smallest: ceil(@font-size-base * 0.7);
+@font-size-small: ceil(@font-size-base * 0.85);
+@font-size-base: 14px;
+@font-size-large: ceil(@font-size-base * 1.25);
+@font-size-larger: ceil(@font-size-base * 1.75);
+@font-size-largest: ceil(@font-size-base * 2.10);
+
+// Fonts - Headlines - Sizes
+@font-size-h1: 30px;
+@font-size-h2: 30px;
+@font-size-h3: 26px;
+@font-size-h4: 22px;
+@font-size-h5: 18px;
+@font-size-h6: @font-size-base;
+
+// Fonts - Headlines - Weights
+@headings-font-family: @font-family-base;
+@headings-font-weight: 500;
+@headings-line-height: 1.1;
+@headings-color: inherit;
+@headings-small-color: @gray-light;
+
+// Fonts - Line Heights
+@line-height-base: 1.428571429;
+@line-height-computed: floor(@font-size-base * @line-height-base);
+
+  // NOTE: this two are not bootstrap variables, but custom ones. Added for compatibility reasons
+  @font-size-medium: 15px;
+  @font-size-xlarge: floor((@font-size-base * 1.43));
+
+  // OLD - font-weight
+  @book: 300;
+  @normal: 400;
+  @semi-bold: 600;
+  @bold: 700;
+  @extra-bold: 900;
+  @font-weight-semi-bold: @semi-bold;
+  @font-weight-bold: @bold;

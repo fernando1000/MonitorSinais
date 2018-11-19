@@ -1,0 +1,89 @@
+@hintHeight: 24px;
+@hintWidth: 24px;
+@separationMargin: 0;
+@borderWidth: 2px;
+@warningColor: @color-brand-warning;
+@exceptionColor: @color-brand-danger;
+@iconLeftMargin: 5px;
+@iconHeight: @hintHeight;
+@iconWidth: @hintWidth;
+@namePaddingLeft: 7px;
+@namePaddingRight: 7px;
+@iconAndTextWidth: 172px;
+@backgroundColorHint: black;
+@textColor: white;
+@backgroundColorExceptions: white;
+
+.MarkerTooltip {
+  background: none;
+  height: @hintHeight;
+  position: relative;
+  left: 0;
+  top: 0;
+  background-color: black;
+
+  &.left {
+    float: right;
+  }
+
+  &.right {
+    float: left;
+  }
+
+  div {
+    height: @hintHeight;
+    line-height: @hintHeight - @borderWidth;
+    text-align: center;
+    font-weight: bold;
+    font-size: @font-size-medium;
+    font-family: @font-family-base;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .vehicleIconAndName {
+    max-width: @iconAndTextWidth;
+    .vehicleIconWrapper {
+      margin-left: @iconLeftMargin;
+      .vehicleIcon {
+        position: relative;
+        width: @hintWidth;
+        height: @hintHeight;
+        fill: @color-base-light;
+        margin: @separationMargin;
+      }
+    }
+    .vehicleName {
+      max-width: @iconAndTextWidth - @iconLeftMargin - @iconWidth;
+      color: @textColor;
+      padding-right: @namePaddingLeft;
+      padding-left: @namePaddingRight;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .ratings {
+    background-color: @backgroundColorExceptions;
+    line-height: (@hintHeight - 2 * @borderWidth);
+
+    &.left {
+      float: left;
+    }
+
+    &.right {
+      float: right;
+    }
+  }
+
+  .RatingCounter {
+    line-height: (@hintHeight - 2 * @borderWidth);
+    padding-right: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+
+    & > div {
+      line-height: (@hintHeight - 2 * @borderWidth);
+    }
+  }
+}

@@ -1,0 +1,92 @@
+
+
+// Color - Grays
+@gray-base: #2a3740;
+@gray-darkest: @gray-base;
+@gray-darker: #4C5667;
+@gray-dark: #697A8B;
+@gray: #A7AFBB;
+@gray-light: #D0D8DE;
+@gray-lighter: #E5EBF0;
+@gray-lightest: #f6f8f9;
+
+// Color - Brand Colors
+@brand-primary: #30b4c0; // OLD GREEN #64B39A
+@brand-success: #5cb85c;
+@brand-warning: #ff8e3c;
+@brand-danger: #d90000;
+@brand-info: #4B80A6;
+
+// Color - Custom highlight colors
+@color-highlight-darkest: darken(@brand-primary, 30%);
+@color-highlight-darker: darken(@brand-primary, 20%);
+@color-highlight-dark: darken(@brand-primary, 10%);
+@color-highlight: @brand-primary;
+@color-highlight-light: lighten(@brand-primary, 25%);
+@color-highlight-lighter: lighten(@brand-primary, 41%);
+@color-highlight-lightest: lighten(@brand-primary, 48%);
+@color-highlight-decent: lighten(@brand-primary, 50%);
+
+/*
+ * DEPRECATED
+ */
+// TODO: refactor: custom colors from colors-less - avoid using these variables and use bootstrap vars instead
+  //Applikation Primärfarben
+  @color-base-darker: @gray-darker;
+  @color-base-dark: @gray-dark;
+  @color-base: @gray;
+  @color-base-light: @gray-light;
+  @color-base-lighter: @gray-lighter;
+  @color-base-lightest: #F8F9FB;
+
+  // sollen ersetzt/gelöscht werden
+  @color-base-light-01: #E1E4E8;
+  @color-base-light-02: #E3E8EB;
+  // END -- sollen ersetzt/gelöscht werden
+
+  //Applikation Auszeichnungsfarben
+  @color-brand-primary: @brand-primary;
+  @color-brand-warning: @brand-warning;
+  @color-brand-danger: @brand-danger;
+  @color-brand-danger-bgblack: #FF2A06;
+  @color-brand-success: @brand-success; //sollen nicht mehr verwendet werden
+  @color-brand-info: @brand-info; //sollen nicht mehr verwendet werden
+
+  //** Background color for `<body>`.
+  @color-bg-body: @body-bg;
+  //** Global text color on `<body>`.
+  @color-text: @color-base-darker;
+
+  @color-bg-default: @body-bg;
+  @color-text-default: @text-color;
+
+  //** Global textual link color.
+  @color-link: @link-color;
+  @color-link-bgblack: #5487D9;
+  @color-link-hover: @link-hover-color;
+  @color-link-selected: #3A609A;
+/*
+ * END DEPRECATED
+ */
+
+
+// TODO: expose or document in a demo page, create custom bg-classes for it?
+// Additional Brand colors
+// Branding Coldplay
+@color-cold-purple: #530D4F;
+@color-cold-blue-1: #516E8A;
+@color-cold-blue-2: #60A1BB;
+@color-cold-blue-3: #2AB7C4;
+@color-cold-green-1: #7AC4AC;
+@color-cold-green-2: #A3D09F;
+@color-cold-green-3: #D1E095;
+@color-cold-yellow: #EFEC8E;
+//Branding Warmup
+@color-warm-purple-1: #31144F;
+@color-warm-purple-2: #7E3D70;
+@color-warm-pink-1: #B13671;
+@color-warm-pink-2: #E62371;
+@color-warm-pink-3: #C8778C;
+@color-warm-orange-1: #F09588;
+@color-warm-orange-2: #F5BC8A;
+@color-warm-yellow: #FCE082;

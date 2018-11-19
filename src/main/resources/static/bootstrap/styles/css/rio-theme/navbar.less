@@ -1,0 +1,436 @@
+// Navbar
+
+/*
+ * Bootstrap variables
+ */
+@navbar-height: 50px;
+@navbar-margin-bottom: @line-height-computed;
+@navbar-default-color: #777;
+@navbar-default-bg: #ffffff;
+@navbar-default-border: darken(@navbar-default-bg, 6.5%);
+@navbar-border-radius: @border-radius-base;
+@navbar-padding-horizontal: floor(@grid-gutter-width / 2);
+@navbar-padding-vertical: ((@navbar-height - @line-height-computed) / 2);
+
+@navbar-default-link-color: #777;
+@navbar-default-link-hover-color: #333;
+@navbar-default-link-hover-bg: transparent;
+@navbar-default-link-active-color:  #555;
+@navbar-default-link-active-bg: darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:  @gray-light;
+@navbar-default-link-disabled-bg: transparent;
+@navbar-default-brand-color: @navbar-default-link-color;
+@navbar-default-brand-hover-color: darken(@navbar-default-link-color, 10%);
+@navbar-default-brand-hover-bg: transparent;
+@navbar-default-toggle-hover-bg: #ddd;
+@navbar-default-toggle-icon-bar-bg: #888;
+@navbar-default-toggle-border-color: #ddd;
+
+@navbar-inverse-color: @gray-light;
+@navbar-inverse-bg: #222;
+@navbar-inverse-border: darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-color: @gray-light;
+@navbar-inverse-link-hover-color: #fff;
+@navbar-inverse-link-hover-bg: transparent;
+@navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color: #444;
+@navbar-inverse-link-disabled-bg: transparent;
+@navbar-inverse-brand-color: @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color: #fff;
+@navbar-inverse-brand-hover-bg: transparent;
+@navbar-inverse-toggle-hover-bg: #333;
+@navbar-inverse-toggle-icon-bar-bg: #fff;
+@navbar-inverse-toggle-border-color: #333;
+
+// Custom variables
+@navbar-brand-dim: 50px;
+@navbar-brand-home-icon: url(https://cdn.rio.cloud/svg/common/ico_home.svg);
+@navbar-collapse-max-height: 340px;
+
+.ApplicationHeader,
+.navbar {
+  margin-bottom: 0;
+  border: none;
+
+  @media (max-width: @grid-float-breakpoint) {
+    float: none;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+    padding: 0;
+    height: @navbar-brand-dim;
+    width: @navbar-brand-dim;
+    background-image: @navbar-brand-home-icon !important;
+    background-color: transparent !important;
+
+    > a,
+    > .icon {
+      display: block;
+      height: @navbar-brand-dim;
+      width: @navbar-brand-dim;
+    }
+  }
+
+  .navbar-nav {
+    margin: 0;
+    float: none;
+  }
+
+  // TODO: for not breaking style for old ApplicationHeader, we keep
+  // the old structure here as well. Once the new ApplicationHeader is used
+  // everywhere, merge the styles from the we-applicationheader project in here
+
+  // Overwrite old header style to look like the new one
+  .ModuleNavigation {
+    .AppLogo {
+      background-color: #ffffff !important;
+      a {
+        &:before {
+          content: "";
+          background: @navbar-brand-home-icon;
+          display: block;
+          height: 100%;
+        }
+        svg {
+          opacity: 0;
+        }
+      }
+    }
+
+    .dropdown {
+      width: 300px;
+
+      // Reset Background color of main Navigation dropdown of old Header
+      > button:active:hover {
+        background-color: transparent !important;
+      }
+
+      .ModuleDropdownToggleWrap {
+        background-color: transparent !important;
+        font-family: @font-family-sans-serif !important;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .toggleIconWrap {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .SubModuleNavigation {
+    .tabs.nav.nav-tabs {
+      > li {
+        height: 100%;
+        padding: 0 15px;
+
+        &:first-child {
+          padding-left: 30px;
+        }
+        &:hover {
+          > a {
+            color: #000000;
+            background-color: transparent;
+            box-shadow: inset 0px -3px 0px #000000;
+          }
+        }
+        > a {
+          background: transparent;
+          border-color: transparent;
+          border-width: 0;
+          padding: 15px 0 15px 0;
+          height: 100%;
+
+          &.active {
+            color: #000000;
+            box-shadow: inset 0px -3px 0 0 black;
+          }
+        }
+      }
+    }
+  }
+
+  .SubModuleNavigation .tabs li .tab {
+    font-family: @font-family-sans-serif !important;
+    font-weight: 600;
+    margin: 0 !important;
+  }
+
+  .ModuleNavigation,
+  .navbar-nav .dropdown:first-child {
+    position: relative;
+    float: left;
+    border: none;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    height: 50px;
+    line-height: 50px;
+
+    // NOTE: enforce it with important so all services look similar
+    color: #000000 !important;
+    background-color: #ffffff !important;
+
+    // Style the separator between main dropdown and submodules
+    #basic-nav-dropdown,
+    #module-dropdown /* TODO: Remove when old ApplicationHeader is gone */ {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 3px;
+        position: absolute;
+        right: 0;
+        top: 15px;
+        bottom: 15px;
+        background-color: @gray-lighter;
+        transition: all 0.1s ease-in-out;
+      }
+
+      &:first-child:not(:last-child) {
+        &:hover:after {
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+
+    &.open,
+    .dropdown.open /* TODO: Remove when old ApplicationHeader is gone */ {
+      background-color: inherit;
+
+      #basic-nav-dropdown,
+      #module-dropdown /* TODO: Remove when old ApplicationHeader is gone */ {
+        &:after {
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+
+    // Style for the main dropdown
+    > li > a,
+    > a {
+      color: inherit;;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      background-color: transparent;
+
+      // show ... in case service name is too long
+      padding-right: 40px;
+    }
+
+    .caret {
+      //border-color: #000000;
+      position: absolute;
+      right: 20px;
+      //top: 43%;
+    }
+
+    .dropdown-menu {
+      border: none;
+      min-width: 0; // reset default dropdown setting
+      max-width: calc(~"100% - 3px");
+      width: 100%;
+
+      > li > a {
+        padding: 5px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #000000;
+        text-transform: uppercase;
+
+        &.inactive {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  // Component specific style which deviates a bit from the bootstrap structure
+  .ModuleNavigation {
+    &.hasModules,
+    &.hasModules > li > a {
+      cursor: pointer;
+    }
+
+    > li > a {
+      height: 100%;
+      padding-left: 20px;
+      cursor: default;
+    }
+  }
+
+  .SubmoduleNavigation {
+    float: none;
+    display: flex;
+    user-select: none;
+
+    .submodule {
+      white-space: nowrap;
+
+      &.offscreen {
+        position: absolute;
+        opacity: 0;
+      }
+    }
+
+    .CollapsedDropdown {
+      > .dropdown-toggle > .rioglyph {
+        font-size: 18px;
+        top: 3px;
+      }
+
+      > ul.dropdown-menu {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+
+  .ApplicationActionBar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-left: 30px;
+    display: flex;
+
+    > .navigationItem {
+      fill: @gray-dark;
+      color: @gray-dark;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover .icon {
+        fill: @gray-darker;
+        color: @gray-darker;
+      }
+
+      > .ActionBarItem {
+        position: relative;
+        height: 50px;
+        width: 50px;
+
+        .ActionBarItemIcon {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          .icon {
+            fill: inherit;
+            font-size: 26px;
+            width: 26px;
+          }
+
+          .badge {
+            position: absolute;
+            top: 5px;
+            right: 0;
+            font-size: 12px;
+            padding: 2px 6px;
+            border: 2px solid #FFFFFF;
+          }
+        }
+
+        .ActionBarItemBody {
+
+        }
+
+        .popover {
+          cursor: initial;
+        }
+
+        // Enforce style for position of popover and it's arrow
+        // since some value will be set a element style from react-bootstrap
+        .popover.bottom {
+          width: 250px;
+          top: 37px !important;
+          left: 47px !important;
+          transform: translateX(-100%);
+
+          > .arrow {
+            margin-left: 0;
+            left: calc(~"100% - 10px") !important;
+            transform: translateX(-100%);
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-nav:not(.navbar-right) {
+    > li:nth-child(2) {
+      margin-left: 3px;
+    }
+
+    > li:not(:first-child) {
+      cursor: pointer;
+
+      > a {
+        margin: 0px 15px;
+        padding: 15px 0;
+        color: @gray;
+        //font-family: @font-family-sans-serif-big;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background-color: transparent;
+        transition: all 100ms ease-in-out;
+      }
+
+      > a.active,
+      &.active > a,
+      &:focus > a,
+      &:hover > a {
+        color: #000000;
+        background-color: transparent;
+        box-shadow: inset 0px -3px 0px #000000;
+
+        &:after {
+          background-color: #000000;
+          height: 3px;
+          width: 100%;
+          z-index: 1;
+        }
+      }
+
+      &.dropdown {
+        &.active > a,
+        &:hover > a {
+          box-shadow: none;
+        }
+
+        > .dropdown-menu {
+          border: none;
+        }
+      }
+    }
+  }
+}

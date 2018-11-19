@@ -1,0 +1,34 @@
+
+.spinnerInfoBox {
+  text-align: center;
+  line-height: 1.0;
+
+  &.inverse {
+    color: white;
+  }
+
+  .spinnerIcon,
+  .spinnerText {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .spinnerText {
+    margin: 0 10px;
+  }
+}
+
+// Invert color of text for default button when hovering it since the background color of the button changes
+.btn-default {
+  &:hover:not(.inverse) {
+    .spinnerInfoBox {
+      color: @btn-primary-color;
+    }
+  }
+  &.disabled:hover:not(.inverse),
+  &[disabled]:hover:not(.inverse) {
+    .spinnerInfoBox {
+      color: @color-highlight-dark;
+    }
+  }
+}

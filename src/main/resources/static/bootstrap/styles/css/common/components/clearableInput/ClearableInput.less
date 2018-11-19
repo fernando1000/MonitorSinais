@@ -1,0 +1,91 @@
+.ClearableInput {
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+
+  > .form-control {
+    padding-right: 32px;
+  }
+
+  > .clearButton {
+    position: absolute;
+    height: 100%;
+    width: 38px;
+    right: 0;
+    z-index: 3;
+    cursor: pointer;
+    color: @gray;
+    transition: all 0.15s ease-in-out;
+
+    @duration: 0.2s;
+    -webkit-animation: fadeInAnimation @duration;
+    -moz-animation: fadeInAnimation @duration;
+    -ms-animation: fadeInAnimation @duration;
+    -o-animation: fadeInAnimation @duration;
+    animation: fadeInAnimation @duration;
+
+    @keyframes fadeInAnimation {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    &:hover {
+      color: darken(@gray, 20%);
+    }
+
+    > .clearButtonIcon {
+      position: absolute;
+      left: 10px;
+      border: 0;
+      top: 9px;
+      font-size: 1.2em;
+    }
+  }
+
+  // Case for large inputs
+  > .input-lg + .clearButton {
+    > .clearButtonIcon {
+      top: 15px;
+    }
+  }
+
+  // Case for small inputs
+  > .input-sm + .clearButton {
+    > .clearButtonIcon {
+      top: 8px;
+    }
+  }
+
+  // disable ms default clear button
+  ::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+// Case for having addons
+.input-group {
+  .input-group-addon + .ClearableInput {
+    > .form-control {
+      padding-left: 30px;
+    }
+  }
+}
+
+// Case for having feedback-icons
+.form-group.has-feedback {
+  .ClearableInput {
+
+    > .form-control {
+      padding-right: 52px;
+    }
+
+    .clearButton {
+      right: 20px;
+    }
+  }
+
+  .ClearableInput + .form-control-feedback {
+    z-index: 3;
+  }
+}

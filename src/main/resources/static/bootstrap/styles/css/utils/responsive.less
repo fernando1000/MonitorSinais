@@ -1,0 +1,44 @@
+/*  Responsive utils classes */
+@suffix: ~""; // Init empty suffix to create non responsive classes first
+@import (multiple) "responsive/display.less";
+@import (multiple) "responsive/flexbox.less";
+@import (multiple) "responsive/spacings.less";
+
+@media (max-width: @screen-sm) {
+  // we use "max-width @screen-sm" because we also have all
+  // classes without the -XX suffix and bootstrap
+  // normaly uses @screen-xs without a wrapping media query
+  // for the col-6-xs breakpoint behavior instead of col-6.
+  @suffix: -xs;
+  @import (multiple) "responsive/display.less";
+  @import (multiple) "responsive/flexbox.less";
+  @import (multiple) "responsive/spacings.less";
+}
+
+@media (min-width: @screen-sm) {
+  @suffix: -sm;
+  @import (multiple) "responsive/display.less";
+  @import (multiple) "responsive/flexbox.less";
+  @import (multiple) "responsive/spacings.less";
+}
+
+@media (min-width: @screen-md) {
+  @suffix: -md;
+  @import (multiple) "responsive/display.less";
+  @import (multiple) "responsive/flexbox.less";
+  @import (multiple) "responsive/spacings.less";
+}
+
+@media (min-width: @screen-lg) {
+  @suffix: -lg;
+  @import (multiple) "responsive/display.less";
+  @import (multiple) "responsive/flexbox.less";
+  @import (multiple) "responsive/spacings.less";
+}
+
+@media (min-width: @screen-xl) {
+  @suffix: -xl;
+  @import (multiple) "responsive/display.less";
+  @import (multiple) "responsive/flexbox.less";
+  @import (multiple) "responsive/spacings.less";
+}

@@ -1,0 +1,46 @@
+/* Text ellipsis */
+.ellipsis-multiline(@lh, @l) {
+  /* non-webkit */
+  max-height: @lh * @l;
+  /* webkit */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @l;
+  display: -webkit-box;
+  line-height: @lh;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis-2 {
+  .ellipsis-multiline(@line-height-computed, 2);
+}
+.ellipsis-3 {
+  .ellipsis-multiline(@line-height-computed, 3);
+}
+.ellipsis-4 {
+  .ellipsis-multiline(@line-height-computed, 4);
+}
+.ellipsis-5 {
+  .ellipsis-multiline(@line-height-computed, 5);
+}
+.ellipsis-6 {
+  .ellipsis-multiline(@line-height-computed, 6);
+}
+.ellipsis-7 {
+  .ellipsis-multiline(@line-height-computed, 7);
+}
+.ellipsis-8 {
+  .ellipsis-multiline(@line-height-computed, 8);
+}
+.ellipsis-9 {
+  .ellipsis-multiline(@line-height-computed, 9);
+}
+.ellipsis-10 {
+  .ellipsis-multiline(@line-height-computed, 10);
+}

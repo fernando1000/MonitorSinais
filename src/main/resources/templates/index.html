@@ -1,0 +1,1368 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- 
+	<meta http-equiv="refresh" content="60; URL=http://localhost:8080" />
+ 	-->
+
+  <meta charset="utf-8" />
+  <title>Security</title>
+  <base href="/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="bootstrap/styles/css/rio-uikit.css" />
+  <link rel="stylesheet" type="text/css" href="css/meucss.css" />
+
+</head>
+<body class="ApplicationLayout">
+ <div class="ApplicationLayoutHeader">   
+<nav class="ApplicationHeader navbar navbar-default">
+  <div class="navbar-header">
+      <span class="navbar-brand">
+          <a ></a>
+      </span>
+  </div>
+ <ul class="ModuleNavigation AppMenu hasModules">
+        <li class="dropdown">
+            <a href="#" class="ModuleNavigation-dropdown dropdown-toggle" id="basic-nav-dropdown">
+                <span>Security</span>
+                <span class="caret"></span>
+            </a>
+        </li>
+    </ul>
+  <ul class="SubmoduleNavigation NavItems nav navbar-nav">
+    <li></li>
+      <li class="submodule nav-link-item submodule-alerts">
+          <a  class="active">Alertas</a>
+      </li>
+      <li class="submodule nav-link-item submodule-share">
+          <a >Compartilhamento</a>
+      </li>
+      <li class="submodule nav-link-item submodule-macros">
+          <a >Macros</a>
+      </li>
+      <li class="submodule nav-link-item submodule-routes">
+          <a >Rotas</a>
+      </li>
+  </ul>
+    <ul class="ApplicationActionBar nav navbar-nav navbar-right">
+        <li role="presentation" class="navigationItem">
+            <div class="ActionBarItem">
+                <div class="ActionBarItemIcon">
+                	<!-- 
+                    <a href="/messages">
+                	 -->
+                        <span class="icon rioglyph rioglyph-chat"></span>
+                    <!-- 
+                    </a>
+                    -->
+                </div>
+            </div>
+        </li>
+        <li role="presentation" class="navigationItem">
+            <div class="ActionBarItem">
+                <div class="ActionBarItemIcon">
+                    <span class="icon rioglyph rioglyph-user"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+</div>
+
+   <div class="Sidebar">
+
+	  <aside class="aside ApplicationLayoutSidebar">
+	      <div class="ObjectTree collapsed">
+	    
+		  	  <div class="TreeBody">	
+	                  <div class="SearchBar">
+	                      <i aria-label="search" class="rioglyph rioglyph-search icon search-icon"></i>
+	                      <input type="text" id="inputFiltro" class="search-input" placeholder="Buscar por placa" value="" />
+	                  </div>
+
+					  <!-- O menu lateral serah carregado aqui -->
+					  <div id="menuLateral">
+															
+					  </div>  
+					     
+			  </div>
+		
+			  <div class="Navigation">
+	                  <ol class="nav-list">
+	                      <li class="nav-list-item selected">
+	                      <button type="button">
+	                          <i aria-label="truck" class="rioglyph rioglyph-truck icon truck-icon"></i>
+	                      </button>
+	                  </li>
+	                  </ol>
+	                  <button class="close-button" type="button">
+	                      <i aria-label="chevron-left" class="rioglyph rioglyph-chevron-left icon chevron-left-icon"></i>
+	                  </button>
+	           </div>		
+		              
+	      </div>
+	    
+	  
+	  </aside>
+	  
+	</div>
+
+
+  <section class="ApplicationLayoutBody">
+    <div class="modules-container module-alerts">
+        <div class="module-content">
+
+<section class="container-alerts">
+
+	<!-- Os contadores serao carregados aqui -->
+	<div id="contadoresAlertas">
+						
+	</div>    
+	
+  
+  <div class="row">
+      <div class="col-lg-12 mt-10" >
+        <!-- 
+        <a th:href="@{/filtraPor/__${'Todos'}__}">
+        <button class="btn btn-primary pull-right p-10" onclick="mostrarOcultarTodos()" >Ver todos</button>
+        -->
+        <button class="btn btn-primary pull-right p-10" onclick="procuraAlerta('Todos')" >Ver todos</button>
+        <!--  
+        </a>
+        -->
+      </div>
+  </div>
+  
+</section>
+
+
+            <div class="row grids">
+                <div class="AdministrationTable">
+                        <div class="row SelectedFilterBar form-group hide">
+                            <div class="col-md-12">
+                                <span class="SelectedFilterBar-title" style="display:none">Veiculos/Grupos selecionados:</span>
+                                <ul class="list-inline">
+                                    <li>
+                                        <ul class="list-inline">
+                                            <li class="SelectedFilterTag">
+                                                <div class="tag tag-small">
+                                                    <span class="textLabel">
+                                                        <span>
+                                                            10X3262_TBM2
+                                                        </span>
+                                                    </span>
+                                                    <span class="removeFilterButton">x
+                                                        <span class="rioglyph rioglyph-remove"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="SelectedFilterTag">
+                                                <div class="tag tag-small">
+                                                    <span class="textLabel">
+                                                        <span>
+                                                                13X-H805v1-
+                                                        </span>
+                                                    </span>
+                                                    <span class="removeFilterButton">
+                                                        <span class="rioglyph rioglyph-remove"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="SelectedFilterTag">
+                                                <div class="tag tag-small">
+                                                    <span class="textLabel">
+                                                        <span>
+                                                                RIO-Brazil (3)
+                                                        </span>
+                                                    </span>
+                                                    <span class="removeFilterButton">
+                                                        <span class="rioglyph rioglyph-remove"></span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                	
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ActionsDropDown">
+                                <div class="dropdown btn-group btn-group-default">
+                                    <button type="button" class="dropdown-toggle btn btn-default">Ações
+                                        <span class="caret">
+
+                                        </span>
+                                    </button>
+                                    <ul role="menu" class="dropdown-menu">
+                                    		<!-- 
+                                        	<li>
+                                            <a role="menuitem" tabindex="-1" >
+                                                Bloquear Veículo
+                                            </a>
+                                            </li>   
+                                            <li>
+                                                <a role="menuitem" tabindex="-1" >
+                                                    Ativar Sirene
+                                                </a>
+                                            </li>
+                                    		 -->
+                                            
+                                            <li>
+                                                <a role="menuitem" class="btn-actions-resolve-lote" tabindex="-1" >
+                                                    Resolver
+                                                </a>
+                                            </li>
+                                        </ul
+                                    ></div>
+                                </div>
+                            </div>
+                            <div class="search col-md-6">
+                                    <div class="pull-right">
+                                        <div class="TextSearch input-group">
+                                                <span class="rioglyph rioglyph-search"></span>
+                                            <input type="text" id="inputFilter" class="TextSearchInput form-control" placeholder="Buscar por: placa, evento, status" value="" />
+                                        </div>
+                            
+                                    </div>
+
+                            </div>
+                        </div>
+                   
+
+					<div id="carregando">
+					  <p><img src="imagens/carregando.gif" /> Carregando...</p>
+					</div>
+
+					<!-- A tabela de Alertas serah carregada aqui -->
+					<div id="tabelaAlertas">
+						
+					</div>    
+
+                  
+                </div>
+            </div>
+        </div>
+        <div class="modal hide modal-block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>
+                            Solicitação de bloqueio enviada!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modules-container module-share" style="display:none">
+       <div class="module-content">
+            <div class="row SelectedFilterBar form-group">
+                    <div class="col-md-12">
+                        <span class="SelectedFilterBar-title">Veiculos/Grupos selecionados:</span>
+                        <ul class="list-inline">
+                            <li>
+                                <ul class="list-inline">
+                                    <li class="SelectedFilterTag">
+                                        <div class="tag tag-small">
+                                            <span class="textLabel">
+                                                <span>
+                                                    PYT3710
+                                                </span>
+                                            </span>
+                                            <span class="removeFilterButton">
+                                                <span class="rioglyph rioglyph-remove"></span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="SelectedFilterTag">
+                                        <div class="tag tag-small">
+                                            <span class="textLabel">
+                                                <span>
+                                                        TLF1234
+                                                </span>
+                                            </span>
+                                            <span class="removeFilterButton">
+                                                <span class="rioglyph rioglyph-remove"></span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li class="SelectedFilterTag">
+                                        <div class="tag tag-small">
+                                            <span class="textLabel">
+                                                <span>
+                                                        PVU2024
+                                                </span>
+                                            </span>
+                                            <span class="removeFilterButton">
+                                                <span class="rioglyph rioglyph-remove"></span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="form-group content-share">
+                <div class="row">
+                    <h4>Selecione abaixo o parceiro com quem desejar compartilhar o sinal dos veículos selecionados</h4>
+                </div>
+                <div class="row list-share">
+                    <div role="combobox" class="AutoSuggest mb-5">
+                        <input type="text" id="inputCompartilhamento" autocomplete="on" aria-autocomplete="list" aria-controls="react-autowhatever-1" class="form-control" placeholder="Digite o nome procurado" />
+                        <ul id="listaCompartilhamento" class="generic-groups">
+                            <li id="1" class="generic-groups-item">
+                                <button class="generic-groups-button" 
+                                 		onclick="selecionaCompartilhamento('1')">
+                                 		HBSIS SOLUCOES
+                                 </button>
+                            </li>  
+                            <li id="2" class="generic-groups-item">
+                                <button class="share-groups-button generic-groups-button" 
+                                		onclick="selecionaCompartilhamento('2')">
+                                		KRONA TECH Gerenciamento de Riscos
+                                </button>
+                            </li> 
+                            <li id="3" class="generic-groups-item">
+                                <button class="share-groups-button generic-groups-button" 
+                                		onclick="selecionaCompartilhamento('3')">
+                                		SKYMARK GER. DE RISCO
+                                </button>
+                            </li> 
+                            <li id="4" class="generic-groups-item">
+                                <button class="share-groups-button generic-groups-button" 
+                                		onclick="selecionaCompartilhamento('4')">
+                                		OPENTECH SIST DE GER. De RISCO
+                                </button>
+                            </li>   
+                            <li id="5" class="generic-groups-item">
+                                <button class="share-groups-button generic-groups-button" 
+                                		onclick="selecionaCompartilhamento('5')">
+                                		UPPER MONITORAMENTO
+                                </button>
+                            </li>  
+                            <li id="6" class="generic-groups-item">
+                                <button class="share-groups-button generic-groups-button" 
+                                		onclick="selecionaCompartilhamento('6')">
+                                		ZATIX TECNOLOGIA SA
+                                </button>
+                            </li>                             
+                        </ul>
+                        <div class="row">
+                        <a  class="btn btn-primary float-right" onclick="javascript:abrirModalCompartilhar(event,$veiculo_grupo,$parceiro)" data-modal="data-share1">Compartilhar Sinal</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="generic-status-grid">
+                    <div class="row">
+                        <h4>Situação Atual</h4>
+                    </div>
+       
+                        <br/>
+                        <br/>
+                        <br/>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        
+                                    </th>
+                                    <th class="sort-column">
+                                        <span class="sort-arrows-container"><span class="sort-arrows sort-desc"><span class="sort-icon sort-asc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span class="sort-icon sort-desc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+                                        <span>Placa</span>
+                                    </th>
+                                    <th class="sort-column">
+                                            <span class="sort-arrows-container"><span class="sort-arrows sort-desc"><span class="sort-icon sort-asc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span class="sort-icon sort-desc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+                                        <span>Parceiro</span>
+                                    </th>
+                                    <th class="sort-column">
+                                            <span class="sort-arrows-container"><span class="sort-arrows sort-desc"><span class="sort-icon sort-asc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span class="sort-icon sort-desc"><svg xmlns="http://www.w3.org/2000/svg" width="292.362" height="292.362" viewBox="0 0 292.362 292.362"><path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+                                        <span>Status</span>
+                                    </th>
+                                    <th class="sort-column">
+
+                                        <span>Ações
+                                            <span class="rioglyph rioglyph-question-sign text-muted"></span>
+                                        </span>
+                                    </th>
+                                </tr>
+                            
+                            </thead>
+                            <tbody>
+                                <div th:each="row : ${listaComCompartilhamento}">
+                                    <div  th:each="row2 : ${row.parceiros}">
+                                        <tr th:classappend="${'trShare' + row.ordem + row2.getClasse() }" >
+                                            <div th:if="${row2.getFirst()} == '1'">
+                                                <td class="tdCheck">
+                                                    <span class="table-partner-count" th:text="${row.tam}"></span>
+                                                    <button class="table-expand"></button>
+            
+                                                </td>
+                                            </div>
+                                            <div th:if="${row2.getFirst()} == '0'">
+                                                <td class="tdCheck">
+            
+                                                </td>
+                                            </div>                                            
+                                            <td>
+                                             <span th:style="${row2.getFirst()  == '0'? 'color:white': 'color:black'}" th:text="${row.placa}"></span>
+                                            <!--  <span th:text="${row.placa}"></span>-->
+                                            </td>
+                                            
+                                                <td>
+                                                    <span th:text="${row2.getNome()}"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${row2.getStatus()}"></span>
+                                                </td>
+                                                <div th:if="${row2.getAcoes() == '0'}">
+                                                <td>
+                                                    <span>-</span>
+                                                </td>
+                                                </div>
+                                                <div th:if="${row2.getAcoes() == '1'}">
+                                                   <td class="tdActions">
+                                                        <button class="btn btn-primary btn-unshare" data-modal="modal-unshare">
+                                                               Finalizar compartilhamento
+                                                        </button>
+                                                    </td>
+                                                </div>
+                                            
+                                        </tr>
+                                    </div>
+                                </div>        
+                            </tbody>
+                       </table>
+                </div>
+            </div>
+       </div>
+    </div>
+    <div class="modules-container module-macros" style="display:none">
+        
+        <div class="module-content">
+            
+            <div class="row SelectedFilterBar form-group">
+                    <div class="col-md-12">
+                        <span class="SelectedFilterBar-title">Veiculos/Grupos selecionados:</span>
+                        <ul class="list-inline">
+                            <li>
+                            	<!-- Os veiculos serao inseridos aqui -->
+                            	<div id="veiculosMacros">
+                            	
+                            	</div>
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group content-macros content-generic">
+                <div class="row justify-content-around">
+            
+                    <h4 class="col-sm-6">Associar veículos aos seguintes grupos de macros</h4>
+                    <div class="col-sm-6">
+                        <div class="float-right">
+                            <span class="rioglyph rioglyph-question-sign">
+                                <span>Ao clicar no botão "Remover Macros" todas as macros serão desvinculadas dos veículos
+                                </span>
+                            </span>
+                            <a href="#" class="btn btn-primary" data-modal="modal-macro">remover macros</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row list-macros">
+                    <div role="combobox" class="AutoSuggest mb-5">
+                        <input type="text" id="inputMacros" autocomplete="on" aria-autocomplete="list" aria-controls="react-autowhatever-1" class="form-control" placeholder="Digite o nome do grupo de macros" />
+                       
+                        <!-- A lista com macros serah inserida aqui -->
+                        <div id="listaDeMacros">
+                        
+                        </div>
+                        
+                        <a href="#" class="btn btn-primary btn-block">Associar macros aos veículos</a>
+                        <div class="alert alert-dismissible alert-success">
+                            Grupo de macros associadas com sucesso!
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+	 
+        
+    </div>
+    <div class="modules-container module-routes" style="display:none">
+        <div class="module-content">
+                <div class="row SelectedFilterBar form-group">
+                        <div class="col-md-12">
+                            <span class="SelectedFilterBar-title">Veiculos/Grupos selecionados:</span>
+                            <ul class="list-inline">
+                                <li>
+                                    <ul class="list-inline">
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        PVU2014
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">x
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        PVU2024
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        PVU2007
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        PVU2006
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        BCD0383
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        PUC3464
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        HOH6581
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        VWB1828
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        VWB1832
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        MAM2948
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        KRQ3921
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        MAN1234
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        KYI8553
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        VWD1118
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="SelectedFilterTag">
+                                            <div class="tag tag-small">
+                                                <span class="textLabel">
+                                                    <span>
+                                                        LPD8841
+                                                    </span>
+                                                </span>
+                                                <span class="removeFilterButton">
+                                                    <span class="rioglyph rioglyph-remove"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group content-routes content-generic">
+                    <div class="row justify-content-around">
+                        <h4 class="col-sm-12">Clique no campo abaixo para buscar ou selecionar as cercas ou rotas desejadas</h4>
+                    </div>
+                    <div class="row routes-groups-sublist">
+                        <div class="select dropdown" tabindex="0">
+                            <button type="button" class="dropdown-toggle form-control text-left btn-routes-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span></span>
+                                <div class="caret float-right"></div>
+                            </button>
+                            <a href="#" class="btn btn-primary btn-routes-add float-right">Vincular rotas e cercas aos veículos selecionados</a>
+                        </div>
+                        <div class="alert alert-dismissible alert-success">
+                                Rotas e Macros vinculadas com sucesso
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="route-list-group">
+                                    <div class="TextSearch input-group">
+                                        <input type="text" class="TextSearchInput form-control" placeholder="Buscar por: nome da cerca ou nome da rota" />
+                                    </div>                                    <ul class="list-route list-route-head">
+                                    <li class="list-route-item route-head-name"></li>
+                                    <li class="list-route-item route-head-macros"><span>Macros</span></li>
+                                    <li class="list-route-item route-head-evento"><span>Evento</span></li>
+                                    <li class="list-route-item route-head-tipo"><span>Tipo</span></li>
+                                </ul>
+                            <div class="list-rout-content">
+                                <button type="button" class="rout-content-button">
+                                    <span class="rioglyph rioglyph-ok "></span>
+                                    <ul class="list-route list-route-body">
+                                        <li class="list-route-item route-body-name">
+                                            <span class="list-route-icon icon-circ">Cerca 300</span>
+                                        </li>
+                                        <li class="list-route-item route-body-macros">
+                                            <span>Não</span>
+                                        </li>
+                                        <li class="list-route-item route-body-evento">
+                                            <span>Entrada</span>
+                                        </li>
+                                        <li class="list-route-item route-body-tipo">
+                                            <span>Embarcada</span>
+                                        </li>
+                                    </ul>
+                                </button>
+                                <button type="button" class="rout-content-button">
+                                    <span class="rioglyph rioglyph-ok "></span>
+                                    <ul class="list-route list-route-body">
+                                        <li class="list-route-item route-body-name">
+                                            <span class="list-route-icon icon-polig">Cerca 302</span>
+                                        </li>
+                                        <li class="list-route-item route-body-macros">
+                                            <span>Sim</span>
+                                        </li>
+                                        <li class="list-route-item route-body-evento">
+                                            <span>Passagem</span>
+                                        </li>
+                                        <li class="list-route-item route-body-tipo">
+                                            <span>Remota</span>
+                                        </li>
+                                    </ul>
+                                </button>
+                                <button type="button" class="rout-content-button">
+                                    <span class="rioglyph rioglyph-ok "></span>
+                                    <ul class="list-route list-route-body">
+                                        <li class="list-route-item route-body-name">
+                                            <span class="list-route-icon icon-circ">Cerca 303</span>
+                                        </li>
+                                        <li class="list-route-item route-body-macros">
+                                            <span>Não</span>
+                                        </li>
+                                        <li class="list-route-item route-body-evento">
+                                            <span>Saída</span>
+                                        </li>
+                                        <li class="list-route-item route-body-tipo">
+                                            <span>Embarcada</span>
+                                        </li>
+                                    </ul>
+                                </button>
+                                <button type="button" class="rout-content-button">
+                                   <span class="rioglyph rioglyph-ok "></span>
+                                    <ul class="list-route list-route-body">
+                                        <li class="list-route-item route-body-name">
+                                            <span class="list-route-icon icon-circ">Cerca 304</span>
+                                        </li>
+                                        <li class="list-route-item route-body-macros">
+                                            <span>Não</span>
+                                        </li>
+                                        <li class="list-route-item route-body-evento">
+                                            <span>Saída</span>
+                                        </li>
+                                        <li class="list-route-item route-body-tipo">
+                                            <span>Remota</span>
+                                        </li>
+                                    </ul>
+                                </button>
+                            </div>
+                            <div class="route-legends">
+                                <span class="route-legends-title">Tipos de Cercas:</span>
+                                <span class="route-legends-item icon-circ">
+                                     Circular
+                                </span>
+                                <span class="route-legends-item icon-polig">
+                                     Poligonal
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    
+
+ 
+</section>
+<!-- Modal -->
+<div class="modal modal-bloqueio" id="modal-name" style="display:none">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box modal-dialog">
+    <div class="modal-content">
+    <div class="modal-body">
+      <p>Solicitação de Bloqueio Enviada!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal modal-bloqueio" id="modal-name" style="display:none">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box modal-dialog">
+    <div class="modal-content">
+    <div class="modal-body">
+      <p>Solicitação de Bloqueio Enviada!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal modal-bloqueio" id="modal-name" style="display:none">
+  <div class="modal-sandbox"></div>
+  <div class="modal-box modal-dialog">
+    <div class="modal-content">
+    <div class="modal-body">
+      <p>Solicitação de Bloqueio Enviada!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<div class="modal class-mensagem" id="modal-mensagem" style="display:none">
+	  <div class="modal-sandbox"></div>
+	  <div class="modal-box modal-dialog">
+	    <div class="modal-content">
+	    <div class="modal-body" style="overflow:hidden">
+	      <p> Digite abaixo a mensagem que deseja enviar: </p>
+	     
+	       
+	              <textarea type="text" class="form-control center" cols="50" rows="3" >
+	              </textarea>
+	              <div id="phrase" style="display:none" class="alert alert-dismissible alert-success"> Mensagem enviada com sucesso</div>
+
+	              <a class="btn btn-primary float-right"  style="margin-top:10px" id="mensagem-texto" onclick="javascript:enviarMensagem(event)" >enviar</a>
+	         
+	     
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal modal-macro" id="modal-macro" style="display:none">
+	    <div class="modal-box modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-body">
+	          <p>Tem certeza que deseja remover <strong>todas as macros</strong> dos veiculos selecionados?</p>
+	          <div class="row">
+	            <button href="" class="btn btn-primary float-right btn-macro-remove">Remover Macros</button>
+	            <button href="" class="btn btn-default float-right btn-macro-cancel">Cancelar</button>
+	            <div class="alert alert-dismissible alert-success info-macro">
+	                Macros removidas com sucesso!
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	<!-- Modal  -->
+	<div class="modal modal-share" id="modal-share1" style="display:none">
+	    <div class="modal-box modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-body">
+	          <p>Compartilhamento de Sinal Solicitado com para o <strong></strong> </p>
+	          <ul>
+	            <li>PYT3710</li>
+	            <li>TLF1234</li>
+	            <li>PVU2024</li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+    <!-- Modal  -->
+	<div class="modal modal-unshare" id="modal-unshare" style="display:none">
+	    <div class="modal-box modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-body">
+	          <p>Tem certeza que deseja para o compartilhamento com o VolksParceiros?</p>
+	          <div class="row">
+	              <button href="" class="btn btn-primary float-right btn-unshare-remove">Finalizar compartilhamento</button>
+	              <button href="" class="btn btn-default float-right btn-unshare-cancel">Cancelar</button>
+	              <div class="alert alert-dismissible alert-success info-macro">
+	                  Compartilhamento de sinal removido!
+	              </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>  
+
+
+</body>
+
+	  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>	
+	  <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+	  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+	  <script src="js/custom.js" type="text/javascript"></script>
+	  <script src="js/functions.js" type="text/javascript"></script>
+	  <!-- 
+	  <script src="js/jquery-min-1.9.1.js" type="text/javascript"></script>
+	   -->
+	
+	<script>
+	
+    	window.history.replaceState({}, document.title, "/" + "");
+    	
+    	//mostrarOcultarTodos();
+    	
+    	carregaMenuLateral();
+    	
+    	carregaContadoresAlertas();
+    	
+    	procuraAlerta('Todos');
+	
+        adicionaVeiculosNaTelaDeMacro("TodosVeiculos");
+
+    	carregaListaDeMacros();
+    	var novamente = "";
+    	
+    	
+	function mostrarOcultarPorNomeGrupo(nomeGrupo) {
+		
+		var list = "#list"+nomeGrupo;
+		
+          var x = document.getElementById(nomeGrupo);        
+          if (x.style.display === "block") {
+              x.style.display = "none";
+              $(list).removeClass("open");
+          } else {              
+              x.style.display = "block";          
+              $(list).addClass("open");
+          }
+    }
+
+	function mostrarOcultar(seqId) {
+		
+	      var x = document.getElementById(seqId);
+	      if (x.style.display === "table-row") {
+	          x.style.display = "none";
+	      } else {
+	          x.style.display = "table-row";
+	      }
+	}
+	
+	function abrirModal(e){
+        
+        e.preventDefault();
+        
+        
+        jQuery(".AdministrationTable .tdActions-list").removeClass("active");
+        dataModal = jQuery(this).attr("data-modal");
+        jQuery("#" + dataModal).css({"display":"block"});
+        jQuery("#modal-name").css({"display":"block"});
+        setTimeout(function() {
+            jQuery("#modal-name").hide();
+        }, 2000);
+    }
+
+    function ativarSireneQueMostraModal(e){
+        e.preventDefault();    
+        
+        jQuery(this).find(".popover").css("display","block");
+        jQuery("#popover-basic").css({"display":"block"});
+        jQuery(".popover").css({"display":"block"});
+        setTimeout(function() {
+            jQuery("#popover-basic").hide();
+            jQuery(".popover").hide();
+        }, 2000);
+    }
+    
+    function enviarMsg(e){
+        
+        jQuery(".class-mensagem").css({"display":"block"});
+    }
+    
+    function enviarMensagem(e){
+        
+        jQuery("#phrase").css({"display":"block"});
+        setTimeout(function() {
+            jQuery(".class-mensagem").hide();
+        }, 4000);
+        return false;
+    }
+    
+    function selecionaMacro(idDaLi){
+    	
+    	var ul = document.getElementById("listaMacros");    	
+    	$(ul).children("li").each(function() {
+    	    $(this).removeClass("active");
+    	});
+    	
+    	var li = document.getElementById(idDaLi);
+	    $(li).addClass("active");	
+	    
+	    var titulo = li.children[0].innerText;
+        $("#inputMacros").val(titulo);
+    }
+    function selecionaCompartilhamento(idDaLi){
+    	
+       	var ul = document.getElementById("listaCompartilhamento");    	
+    	$(ul).children("li").each(function() {
+    	    $(this).removeClass("active");
+    	});
+    	
+    	var li = document.getElementById(idDaLi);
+	    $(li).addClass("active");
+	    
+	    var titulo = li.children[0].innerText;
+        $("#inputCompartilhamento").val(titulo);
+    }
+    
+    function selecionarTodos(){
+    	$(".AdministrationTable .table .trItens .checkbox-text").trigger( "click" );
+    }
+	</script>
+	
+	<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+    	
+	$("#inputFilter").on("keyup", function() {
+	    var inputValue = $(this).val().toLowerCase();
+		console.log("tabela: "+ inputValue);
+	    $("#customerTable tr").filter(function() {
+	    	$(this).toggle($(this).text().toLowerCase().indexOf(inputValue) > -1)
+	    });
+	  
+	    mostrarOcultarTodos();
+	});
+
+	$("#inputFiltro").on("keyup", function() {
+	    var inputValue = $(this).val().toLowerCase();
+		console.log("menu: "+inputValue);
+	    $("#listaDoMenu li").filter(function() {
+	    	$(this).toggle($(this).text().toLowerCase().indexOf(inputValue) > -1)
+	    });
+	    
+	    mostrarOcultarTodos();
+	    
+	});
+	
+    function mostrarOcultarTodos(){
+	    var theList = [[${listaComHistoricos} ]]
+	    for (i = 0; i < theList.length; i++) {
+	        historico = theList[i];
+	        var seqId = historico.seqId;
+	    console.log(seqId);
+	    
+		      var x = document.getElementById(seqId);
+		          x.style.display = "none";	        
+	    }
+    }
+    
+    function procuraPorPlacaParaMacro(nomeDaPlaca){
+    	console.log("procura Por Placa Para Macro");
+    	var url = '/procuraPorPlacaParaMacro/'+nomeDaPlaca;
+    	$("#veiculosMacros").load(url);
+    }
+    function procuraPlaca(nomeDaPlaca, nomeGrupo) {
+    	var url = '/procuraPlaca/'+nomeDaPlaca;
+    	$("#tabelaAlertas").load(url);
+    	
+    	procuraPorPlacaParaMacro(nomeDaPlaca);
+    	
+    	destacaVeiculoSelecionado(nomeDaPlaca, nomeGrupo);
+    }
+    
+    function destacaVeiculoSelecionado(placaSelecionada, nomeGrupo){
+        
+        var theList = [[${listaComHistoricos} ]]
+        var expr = nomeGrupo;
+        console.log("case ==>" + expr);
+        switch (expr) {
+          case 'TodosVeiculos':
+              
+            for (i = 0; i < theList.length; i++) {
+            
+                      historico = theList[i];
+                     
+                      var placaDoObjeto = historico.plate;
+               
+                      var x = document.getElementById(placaDoObjeto);
+                     
+                      console.log("placaDoObjeto ==>" + $("#button"+placaSelecionada));
+                      if(placaDoObjeto == placaSelecionada){
+                          
+                          $( "#" + placaSelecionada ).toggleClass("selecionado-list-lateral");
+                          $( "#button" + placaSelecionada ).toggleClass("selecionado-button-lateral");
+                          if($("#listTodosVeiculos").hasClass("selected")){
+                              $("#listTodosVeiculos").toggleClass("selected");
+                          }
+                          if(document.getElementById(placaSelecionada).style.color == "rgb(208, 216, 222)"){
+                              
+                              console.log("placaSelecionada if ==>" + placaSelecionada + " - "+ document.getElementById(placaSelecionada).style.color);
+                              $( "#" + placaSelecionada )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                              $( "#button" + placaSelecionada )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                              $( "#" + placaSelecionada ).css("color","rgb(255,255,255)");
+                              $( "#button" + placaSelecionada ).css("color","rgb(255,255,255)");
+                              document.getElementById(placaSelecionada).style.color = "rgb(255,255,255)";
+                              $( "#button" + placaSelecionada ).css("color","rgb(255,255,255)");
+                          }else{
+                              
+                              if(document.getElementById(placaSelecionada).style.color == ""){
+                                 // console.log("placaSelecionada if ==>" + placaSelecionada + " - "+ document.getElementById(placaSelecionada).style.color);
+                                  $( "#" + placaSelecionada )
+                                  .closest( "li" )
+                                  .css( "border-left", "3px solid rgb(255,255,255)" );
+                                  $( "#button" + placaSelecionada )
+                                  .closest( "li" )
+                                  .css( "border-left", "3px solid rgb(255,255,255)" );                       
+                                  $( "#" + placaSelecionada ).css("color","rgb(255,255,255)");
+                                  document.getElementById(placaSelecionada).style.color = "rgb(255,255,255)";
+                                  $( "li#FrotaPadrão #button" + placaSelecionada ).css("color","rgb(255,255,255)");
+                                  break;
+                              }
+                              console.log("placaSelecionada else ==>" + placaSelecionada + " - "+ document.getElementById(placaSelecionada).style.color);
+                              $( "#" + placaSelecionada )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid #222833" );
+                              $( "#button" + placaSelecionada ).css("color","rgb(208, 216, 222)");
+                              $( "#" + placaSelecionada ).css("color","rgb(208, 216, 222)");
+                              document.getElementById(placaSelecionada).style.color = "rgb(208, 216, 222)";
+                              $( " li#FrotaPadrão #button" + placaSelecionada ).css("color","rgb(208, 216, 222)");
+                              $( "li#FrotaPadrão #button" + placaSelecionada )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                          }
+                         /* */
+                      }else{
+                          
+                          document.getElementById(placaDoObjeto).style.color = "rgb(208, 216, 222)";  
+                          $( "#button" + placaDoObjeto )
+                          .closest( "li" )
+                          .css( "border-left", "5px solid #222833" );
+                          $( "li#FrotaPadrão #button" + placaDoObjeto ).css("color","rgb(208, 216, 222)");
+                          $( "#" + placaDoObjeto ).css("color","rgb(208, 216, 222)");
+                          $( "#button" + placaDoObjeto ).css("color","rgb(208, 216, 222)");
+                      }
+                      
+                      if(placaSelecionada.includes("grupo")){ 
+                          if(('grupo'+placaDoObjeto) == placaSelecionada){
+                              console.log(placaSelecionada);
+                              $( "li#FrotaPadrão #button" + placaDoObjeto )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                              document.getElementById('grupo'+placaSelecionada).style.color = "rgb(255,255,255)";
+                          }else{
+                              document.getElementById('grupo'+placaDoObjeto).style.color = "rgb(208, 216, 222)";  
+                              $( "#button" + placaDoObjeto )
+                              .closest( "li" )
+                              .css( "border-left", "3px solid #222833" );
+                         }
+                      }
+                    
+                     if(placaSelecionada === 'a'){
+                         console.log('aqui');
+                         document.getElementById(placaSelecionada).style.color = "rgb(255,255,255)";
+                         $('button .group-item-label').css("color","rgb(255,255,255)");
+                     }
+
+                }
+        break;
+        case 'FrotaPadrão':
+            
+            for (i = 0; i < theList.length; i++) {
+                
+                  historico = theList[i];                 
+                  var placaDoObjeto = historico.plate;           
+                  var x = document.getElementById(placaDoObjeto);
+                  // var frotaobjeto = $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada);
+                  var frotaobjeto = $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada).text();                  
+                  // var frotaobjeto = $(this).text();
+                 
+                  console.log("placaDoObjeto ==>" + $.trim(frotaobjeto));
+                  if(placaDoObjeto == placaSelecionada){
+                      if (novamente == placaSelecionada)
+                      {
+                          console.log("if placa==>" + novamente );
+                            $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada)
+                            .css( "border-left", "3px solid #222833" ); 
+                              $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada + " button")
+                              .css( "color", "rgb(208, 216, 222)" );
+                            novamente = "";
+                      }else{ 
+                          novamente = placaSelecionada;
+                            console.log(placaSelecionada);
+                            var result = $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada).css( "border-left" );
+                              
+                              if($("#listFrotaPadrão").hasClass("selected")){
+                                  $("#listFrotaPadrão").toggleClass("selected");
+                              }
+                      
+                              $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada)
+                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                              $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada + " button")
+                              .css( "color", "rgb(255,255,255)" );                              
+                              
+                      }    
+                  }else{
+                      
+                        $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaDoObjeto)
+                        .css( "border-left", "3px solid #222833" ); 
+                        
+                          $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaDoObjeto + " button")
+                          .css( "color", "rgb(208, 216, 222)" );
+                        
+                  }
+            }
+        break;
+        case 'FrotaOnibus':
+                               for (i = 0; i < theList.length; i++) {
+                                
+                                  historico = theList[i];                 
+                                  var placaDoObjeto = historico.plate;           
+                                  var x = document.getElementById(placaDoObjeto);
+                                  // var frotaobjeto = $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada);
+                                  var frotaobjeto = $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada).text();                  
+                                  // var frotaobjeto = $(this).text();
+                                 
+                                  console.log("placaDoObjeto ==>" + $.trim(frotaobjeto));
+                                  if(placaDoObjeto == placaSelecionada){
+                                      if (novamente == placaSelecionada)
+                                      {
+                                          console.log("if placa==>" + novamente );
+                                            $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada)
+                                            .css( "border-left", "3px solid #222833" ); 
+                                              $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada + " button")
+                                              .css( "color", "rgb(208, 216, 222)" );
+                                            novamente = "";
+                                      }else{ 
+                                          novamente = placaSelecionada;
+                                            console.log(placaSelecionada);
+                                            var result = $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada).css( "border-left" );
+                                              
+                                              if($("#listFrotaOnibus").hasClass("selected")){
+                                                  $("#listFrotaOnibus").toggleClass("selected");
+                                              }
+                                      
+                                              $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada)
+                                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                                              $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaSelecionada + " button")
+                                              .css( "color", "rgb(255,255,255)" );                              
+                                              
+                                      }    
+                                  }else{
+                                      
+                                        $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaDoObjeto)
+                                        .css( "border-left", "3px solid #222833" ); 
+                                        
+                                          $("li#listFrotaOnibus ol#FrotaOnibus li#" + placaDoObjeto + " button")
+                                          .css( "color", "rgb(208, 216, 222)" );
+                                        
+                                  }
+                          }
+            break;    
+        case 'FrotaCaminhoes':
+                               for (i = 0; i < theList.length; i++) {
+                                
+                                  historico = theList[i];                 
+                                  var placaDoObjeto = historico.plate;           
+                                  var x = document.getElementById(placaDoObjeto);
+                                  // var frotaobjeto = $("li#listFrotaPadrão ol#FrotaPadrão li#" + placaSelecionada);
+                                  var frotaobjeto = $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada).text();                  
+                                  // var frotaobjeto = $(this).text();
+                                 
+                                  console.log("placaDoObjeto ==>" + $.trim(frotaobjeto));
+                                  if(placaDoObjeto == placaSelecionada){
+                                      if (novamente == placaSelecionada)
+                                      {
+                                          console.log("if placa==>" + novamente );
+                                            $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada)
+                                            .css( "border-left", "3px solid #222833" ); 
+                                              $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada + " button")
+                                              .css( "color", "rgb(208, 216, 222)" );
+                                            novamente = "";
+                                      }else{ 
+                                          novamente = placaSelecionada;
+                                            console.log(placaSelecionada);
+                                            var result = $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada).css( "border-left" );
+                                              
+                                              if($("#listFrotaCaminhoes").hasClass("selected")){
+                                                  $("#listFrotaCaminhoes").toggleClass("selected");
+                                              }
+                                      
+                                              $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada)
+                                              .css( "border-left", "3px solid rgb(255,255,255)" );
+                                              $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaSelecionada + " button")
+                                              .css( "color", "rgb(255,255,255)" );                              
+                                              
+                                      }    
+                                  }else{
+                                      
+                                        $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaDoObjeto)
+                                        .css( "border-left", "3px solid #222833" ); 
+                                        
+                                          $("li#listFrotaCaminhoes ol#FrotaCaminhoes li#" + placaDoObjeto + " button")
+                                          .css( "color", "rgb(208, 216, 222)" );
+                                        
+                                  }
+                        }
+            break;            
+        default:
+        break;
+        }
+    }
+
+    function abrirModalCompartilhar(e,$veiculo_grupo,$parceiro){
+        $("#modal-share1 strong").append("<span>" + $parceiro + "</span>");
+        //$("#modal-share1 ul").append("<li>"+ $veiculo_grupo +"</li>");
+        console.log("caiu "+ $veiculo_grupo + " parceiro" + $parceiro);
+        jQuery("#modal-share1").css({"display":"block"});
+
+        setTimeout(function() {
+            jQuery("#modal-share1").hide($parceiro);
+            $("#modal-share1 strong span").remove();
+            $("#modal-share1 ul li").remove();
+            window.location = 'http://34.255.101.198:8080/addCompartilhamento/{'+ 'PVU2007,PVZ4884,HOH6581' +'}/{'+ $parceiro +'}';      
+        }, 4000);
+        
+
+    }
+
+ 
+    /*]]>*/
+	</script>
+
+</html> 

@@ -1,0 +1,119 @@
+/*
+ * Styles for Expander - based on Bootstrap Panels.
+ */
+.expander-panel {
+
+  &.panel.panel-blank {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .panel-heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom-width: 0;
+    transition: 300ms all ease-out;
+
+    &.open {
+      border-bottom-width: 1px;
+    }
+
+    &.icon-left {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+
+      .expander-icon {
+        margin: 0 7px 0 0;
+      }
+
+      &.open {
+        .expander-icon {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  &.panel-info .expander-icon,
+  &.panel-primary .expander-icon {
+    color: #ffffff;
+  }
+}
+
+/*
+ * Icon styles that are common for both expander elements
+ */
+.expander-panel,
+.expander-list {
+
+  .expander-icon {
+    margin: 0 0 0 7px;
+    color: @gray-dark;
+    transition: all 150ms ease-in-out;
+  }
+
+  .open {
+    .expander-icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/*
+ * Styles for ExpanderList - based on Bootstrap List Groups.
+ * Some styles have to be extended in order to support using the Grid within the header
+ * and to use an icon to indicate open/close state
+ */
+.expander-list {
+  > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 0;
+
+    &.list-group-item-primary,
+    &.list-group-item-success,
+    &.list-group-item-danger,
+    &.list-group-item-warning,
+    &.list-group-item-info {
+      color: inherit;
+    }
+
+    .expander-list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 10px 15px;
+
+      &-content {
+        width: 100%;
+      }
+    }
+
+    &.expandable .expander-list-header {
+      cursor: pointer;
+      transition: background-color 100ms ease-in-out;
+
+      &:hover {
+        background-color: @list-group-hover-bg;
+      }
+    }
+
+    .expander-list-body-wrapper {
+      width: 100%;
+    }
+
+    // Due to animation reasons, the padding for the content need to be set on another wrapper element
+    // inside the body element, otherwise the animation stutters.
+    .expander-list-body-wrapper .expander-list-body {
+      padding: 15px;
+      width: 100%;
+    }
+  }
+}

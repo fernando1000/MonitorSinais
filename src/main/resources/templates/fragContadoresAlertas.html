@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+	<div th:fragment="fragConteudoContadoresAlertas" class="results-block">
+
+	  <ul class="list-alerts">
+  
+	  	<li class="list-alerts-item alerts-type alerts-type-crical row" 
+	  		th:classappend="${classActiveSettingsCritico == 'active'? 'active': ''}" 
+	  		onclick="procuraAlerta('Critico')">
+	  		
+	        <div class="alerts-type-square">
+	            <span class="alerts-count" th:text="${critico}"></span>
+	        </div>
+	        <div class="alerts-legend" >
+	          <span class="alerts-symbol"></span>
+	          <span class="alerts-name">Critico</span>
+	        </div>
+	        
+	    </li>
+	    
+	     <li class="list-alerts-item alerts-type alerts-type-alert row"  
+	     	 th:classappend="${classActiveSettingsAlerta == 'active'? 'active': ''}" 
+	     	 onclick="procuraAlerta('Alerta')">
+	    
+	        <div class="alerts-type-square">
+	            <span class="alerts-count" th:text="${alerta}"></span>
+	        </div>
+	        <div class="alerts-legend" >
+	          <span class="alerts-symbol"></span>
+	          <span class="alerts-name">Alertas</span>
+	        </div>
+	         
+	    </li>
+	    
+	    <li class="list-alerts-item alerts-type alerts-type-normal row equal-height" 
+	    	th:classappend="${classActiveSettingsNormal == 'active'? 'active': ''}" 
+	    	onclick="procuraAlerta('Normal')">
+	    	
+	        <div class="alerts-type-square">
+	            <span class="alerts-count" th:text="${normal}"></span>
+	        </div>
+	        <div class="alerts-legend" >
+	          <span class="alerts-symbol"></span>
+	          <span class="alerts-name">Normal</span>
+	        </div>
+	          
+	    </li>
+	    
+	  </ul>
+	
+	</div>
+
+</body>
+</html>

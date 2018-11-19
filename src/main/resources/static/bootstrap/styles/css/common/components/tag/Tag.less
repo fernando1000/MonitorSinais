@@ -1,0 +1,133 @@
+.tag {
+  @tagSize: @btn-size-sm;
+  @tagSizeSmall: @btn-size-xs;  
+
+  background: #ffffff;
+  font-size: 14px;
+  line-height: @tagSize * 0.6;
+  border-radius: 2px;
+  border: 1px solid @gray-light;
+  color: @gray-dark;
+  text-align: center;
+  border-radius: @tagSize;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  padding: 
+    @tagSize * 0.2
+    @tagSize * 0.4
+    @tagSize * 0.2
+    @tagSize * 0.4
+  ;
+
+  &[style*="width"],
+  &.multiline {
+    padding-left: @tagSize * 0.5;
+    padding-right: @tagSize * 0.5;
+  } 
+
+  &.rioglyph {
+    font-family: @font-family-sans-serif !important;
+    font-weight: 600;
+
+    &:before {
+      .rioglyph();
+      line-height: @tagSize * 0.6;
+      margin-right: @tagSize * 0.2;
+      display: inline-flex;
+      font-weight: 500;
+      font-family: 'rioglyph' !important;
+      align-self: center;
+    }
+  }
+  
+  &.disabled {
+    border-color: @gray;
+    background-color: @gray-light;
+    opacity: .5;
+    position: relative;
+
+    > * {
+      pointer-events: none;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      cursor: not-allowed;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: @gray-lightest;
+    }
+  }
+
+  &.active {
+    background-color: fade(@color-highlight, 20%);
+    border-color: @color-highlight;
+    color: @color-highlight;
+
+    &:hover {
+      background-color: fade(@color-highlight, 30%);
+    }
+  }
+
+  &.deletable {
+    &:before {
+      order: 2;
+      margin-top: 1px;
+      margin-left: @tagSize * 0.2;
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: @brand-danger;
+      
+      &:not(:after) {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &.tag-small {
+    font-size: 12px;
+    line-height: @tagSizeSmall * 0.6;
+    border-radius: @tagSizeSmall;
+    padding: 
+      @tagSizeSmall * 0.2
+      @tagSizeSmall * 0.5
+      @tagSizeSmall * 0.2
+      @tagSizeSmall * 0.5
+    ;
+
+    &[style*="width"],
+    &.multiline {
+      padding-left: @tagSizeSmall * 0.5;
+      padding-right: @tagSizeSmall * 0.5;
+    }
+
+    &.rioglyph {
+      &:before {
+        line-height: @tagSizeSmall * 0.6;
+        margin-right: @tagSizeSmall * 0.2;
+      }
+    }
+
+    &.deletable {
+      &:before {
+        margin-left: @tagSizeSmall * 0.2;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,19 @@
+.esconde {
+    display: none;
+}
+
+.esconde td{
+	border-top:0!important;
+}
+
+.container-alerts .list-alerts .list-alerts-item > a:hover{
+	text-decoration:none;
+}
+
+.AdministrationTable .table th:last-child {
+    width: 10%;
+}
+
+.selecionado{
+	background: red!important;
+}

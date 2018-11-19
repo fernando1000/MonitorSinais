@@ -1,0 +1,37 @@
+@ratingCounterWidth: 24px;
+
+.VehicleRatingCounter {
+  display: table-cell;
+  color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  padding-right: 2px;
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  & > div {
+    padding: 0 2px;
+    min-width: @ratingCounterWidth;
+  }
+}
+
+.VehicleRatingCounter(@color) {
+  color: @color;
+  border: 2px solid @color;
+  font-size: @font-size-base;
+  font-weight: 900;
+}
+
+.VehicleRatingCounterHigh {
+  .VehicleRatingCounter(#17783F);
+}
+
+.VehicleRatingCounterMedium {
+  .VehicleRatingCounter(@color-brand-warning);
+}
+
+.VehicleRatingCounterLow {
+  .VehicleRatingCounter(@color-brand-danger);
+}

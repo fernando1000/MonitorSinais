@@ -1,0 +1,12 @@
+// TODO: move to a dedicate place as it's not a bootstrap overwrite
+
+/* Default application content area with default padding and default background */
+.module-content {
+  position: relative;
+  height: 100%; // application frame handles the subtraction of header-height
+  padding: 30px; // according to design specs
+  margin: 0;
+  overflow: auto;
+  background-color: @gray-lighter;
+  min-width: 900px; // responsiveness - step1
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+	<div th:fragment="fragConteudoVeiculosMacros">
+
+           						<ul class="list-inline">
+                                    <li class="SelectedFilterTag" th:each="historico : ${listaComHistoricos}">
+                                        <div class="tag tag-small">
+                                            <span class="textLabel">
+                                                <span th:text="${historico.plate}"></span>
+                                            </span>
+                                            <span class="removeFilterButton">
+                                                <span class="rioglyph rioglyph-remove"></span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                     
+	</div>
+
+</body>
+
+</html>

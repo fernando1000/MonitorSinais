@@ -1,0 +1,92 @@
+@dim-radio-size-default: 14px;
+
+@color-disabled-inverted: darken(@gray-darker, 20%);
+
+.radio > label {
+  padding-left: 0;
+}
+
+.radio-inline {
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.radio,
+.radio-inline {
+  input[type="radio"] {
+    display: none;
+
+    + .radio-text {
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    + .radio-text:before,
+    + .radio-text:after {
+      display: inline-block;
+      position: relative;
+      height: @dim-radio-size-default;
+      width: @dim-radio-size-default;
+      border-radius: 50%;
+      border: 1px solid @gray;
+      background-color: @body-bg;
+      top: -2px;
+      -webkit-font-smoothing: antialiased;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    + .radio-text:before {
+      content: "";
+    }
+
+    // Show icon on right side and disable icon on left side
+    &.icon-right + .radio-text {
+      &:after {
+        content: "";
+        margin-left: 5px;
+        margin-right: 0;
+      }
+      &:before {
+        display: none;
+      }
+    }
+
+    // Define style for 'checked' state
+    &:checked + .radio-text {
+      &:before,
+      &:after {
+        border-color: @brand-primary;
+        border-width: 4px;
+        animation: radio-tick 100ms ease-in;
+      }
+    }
+
+    // Define style for 'diabled' state
+    &:disabled + .radio-text {
+      color: @gray-dark;
+      cursor: not-allowed;
+
+      &:before,
+      &:after {
+        border-color: @gray-dark;
+      }
+    }
+  }
+}
+
+@keyframes radio-tick {
+  0% {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

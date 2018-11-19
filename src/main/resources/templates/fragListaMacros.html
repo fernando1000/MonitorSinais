@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+	<div th:fragment="fragConteudoListaMacros" class="results-block">
+
+						<ul id="listaMacros" class="generic-groups">
+                            <li th:id="${macro.nomeMacro}" class="generic-groups-item" th:each="macro : ${listaComMacros}">
+                                <button  class="generic-groups-button" 
+                               			th:onclick="'javascript:selecionaMacro(\'' + ${macro.nomeMacro} +'\');'">
+                                		<span class="display-name" th:text="${macro.nomeMacro}"></span>
+                                </button>
+                                <ul class="generic-groups-sublist hide">
+                                    <li th:each="atividade: ${macro.atividades}">
+                                    	<span th:text="${atividade}"></span>
+                                    </li>
+                                </ul>
+                            </li>  
+                        </ul>
+	
+
+	</div>
+
+</body>
+
+</html>

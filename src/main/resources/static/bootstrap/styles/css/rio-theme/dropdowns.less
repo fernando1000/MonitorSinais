@@ -1,0 +1,129 @@
+// Dropdowns
+
+/*
+ * Bootstrap variables
+ */
+@dropdown-bg: #fff;
+@dropdown-border: @gray-light;
+@dropdown-divider-bg: @gray-light;
+@dropdown-link-active-color: #fff;
+@dropdown-link-active-bg: @component-active-bg;
+@dropdown-link-color: @gray-base;
+@dropdown-link-hover-color: #fff;
+@dropdown-link-hover-bg: @dropdown-link-active-bg;
+@dropdown-link-disabled-color: @gray-light;
+@dropdown-header-color: @gray;
+@dropdown-caret-color: @gray-dark;
+
+// Custom variables
+@dropdown-max-height: 211px; // Used for Select and AutoSuggest components
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  margin: -1px 0 0 0;
+  padding: 0;
+  min-width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.172549) 0px 10px 8px;
+
+  > li  {
+    > a {
+      position: relative;
+      line-height: 2;
+
+      &:active:focus {
+        outline: 0;
+      }
+    }
+
+    &:last-child:not(:first-child) {
+      margin-bottom: 5px;
+    }
+  }
+
+  > .active > a {
+    color: inherit;
+    background-color: inherit;
+  }
+
+  .menuitem:focus {
+    outline: 0;
+  }
+
+  > .dropdown-header,
+  > .select-header {
+    color: @color-highlight-dark;
+    font-size: @font-size-base;
+    pointer-events: none;
+    line-height: 2;
+    padding: 2px 10px;
+    margin-bottom: 5px;
+
+    &:not(:first-child) {
+      margin-top: 5px;
+    }
+  }
+
+  > .divider {
+    margin: 5px 0;
+  }
+}
+
+.input-group-btn,
+.dropdown {
+  .dropdown-toggle {
+    .caret {
+      margin-left: 6px;
+    }
+  }
+}
+
+.caret {
+  border: none;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  transition: all 150ms ease-in-out;
+  transform-origin: center;
+
+  &:before {
+    .rioglyph();
+    content: @rioglyph-chevron-down;
+  }
+}
+
+.dropdown {
+  &.btn-group > .btn + .dropdown-toggle {
+    .caret {
+      margin-left: 0px;
+    }
+  }
+
+  &:not(.open) {
+    > .dropdown-menu  {
+      display: unset;
+      position: fixed;
+      top: -10000px;
+      left: -10000px;
+    }
+  }
+
+  &.open {
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.dropup {
+    .dropdown-menu {
+      margin-bottom: 0;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    }
+  
+    .caret {
+      border: none;
+    }
+  }
+}

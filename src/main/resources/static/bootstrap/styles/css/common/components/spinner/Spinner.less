@@ -1,0 +1,57 @@
+.spinnerMixin(
+  @spinner-size,
+  @spinner-color-front,
+  @spinner-color-front-inverse,
+  @spinner-color-back: transparent,
+  @spinner-spin-duration: 1s
+) {
+  @spinner-border-width: @spinner-size / 6;
+
+  width: @spinner-size;
+  height: @spinner-size;
+  border: @spinner-border-width solid @spinner-color-back;
+  border-radius: 50%;
+  border-top-color: @spinner-color-front;
+  border-right-color: @spinner-color-front;
+  animation: spin @spinner-spin-duration infinite linear;
+
+  &.inverse {
+    border-top-color: @spinner-color-front-inverse;
+    border-right-color: @spinner-color-front-inverse;
+  }
+}
+
+.spinner {
+  .spinnerMixin(1em, @color-highlight-dark, white);
+
+  &.double {
+    .spinnerMixin(2em, @color-highlight-dark, white);
+  }
+}
+
+// Invert color for default button when hovering it since the background color of the button changes
+.btn-default {
+  &:hover:not(.inverse) {
+    .spinner {
+      border-top-color: @btn-primary-color;
+      border-right-color: @btn-primary-color;
+    }
+  }
+  &.disabled:hover:not(.inverse),
+  &[disabled]:hover:not(.inverse) {
+    .spinner {
+      border-top-color: @color-highlight-dark;
+      border-right-color: @color-highlight-dark;
+    }
+  }
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

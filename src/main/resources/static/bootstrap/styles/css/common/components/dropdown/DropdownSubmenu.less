@@ -1,0 +1,34 @@
+.dropdown-submenu {
+  position: relative;
+
+  &:hover > .dropdown-menu {
+    visibility: visible;
+  }
+
+  &.disabled:hover > .dropdown-menu {
+    visibility: hidden;
+  }
+
+  > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    bottom: auto;
+  }
+
+  > .submenu-title {
+    cursor: pointer;
+
+    > .submenu-title-text {
+      padding-right: 5px;
+    }
+
+    > .rioglyph {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 8px;
+      height: 100%;
+      font-size: 0.8em;
+    }
+  }
+}

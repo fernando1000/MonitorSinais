@@ -1,0 +1,69 @@
+.Sidebar {
+  height: 100%;
+  background-color: #ffffff;
+}
+.Sidebar:not(.unresponsive) {
+  max-width: 100vw;
+}
+.SidebarHeader {
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 10px;
+  position: relative;
+}
+.SidebarHeader .SidebarTitle {
+  line-height: 30px;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.SidebarHeader .close {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.SidebarBody {
+  height: calc(100vh - 100px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ApplicationLayoutSidebar:not(.right) .Sidebar.fluid {
+  float: left;
+  left: 0;
+}
+.ApplicationLayoutSidebar:not(.right) .Sidebar.fluid:not(:first-child) {
+  box-shadow: inset 5px -5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.ApplicationLayoutSidebar:not(.right) .Sidebar.fluid.closed + .Sidebar.fluid {
+  box-shadow: none;
+}
+.ApplicationLayoutSidebar.right .Sidebar.fluid {
+  float: right;
+}
+.ApplicationLayoutSidebar.right .Sidebar.fluid:not(:first-child) {
+  box-shadow: inset -5px -5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.ApplicationLayoutSidebar.right .Sidebar.fluid.closed + .Sidebar.fluid {
+  box-shadow: none;
+}
+.Sidebar.fly {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.ApplicationLayoutSidebar:not(.right) .Sidebar.fly {
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.1);
+  left: 0;
+}
+.ApplicationLayoutSidebar.right .Sidebar.fly {
+  box-shadow: -5px 5px 5px 0 rgba(0, 0, 0, 0.1);
+  right: 0;
+}
+.Sidebar.closed {
+  display: none;
+}

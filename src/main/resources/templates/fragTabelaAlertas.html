@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+	<div th:fragment="fragConteudoTabelaAlertas" th:unless="${#lists.isEmpty(listaComHistoricos)}" class="results-block">
+
+		<table id="customerTable" class="table table-hover table-bordered table-sm">
+
+			<thead>
+				<tr>
+					<th>
+						<div class="checkboxWrapper">
+							<label class=""> 
+								<input type="checkbox" class="no-animation" value="on" /> 
+								<span class="checkbox-text" onclick="selecionarTodos()"></span>
+							</label>
+						</div>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(1)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc1"><span
+								class="sort-icon sort-asc" id="sort-asc1"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Placa</span>
+					</th>
+					<!--
+                                    <th th class="sort-column">
+                                     -->
+					<th class="th-sm sort-column" onclick="javascript:sortTable(2)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc2"><span
+								class="sort-icon sort-asc" id="sort-asc2"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Evento</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(3)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc3"><span
+								class="sort-icon sort-asc" id="sort-asc3"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Data/Hora</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(4)">
+						<span class="sort-arrows-container"> <span class="sort-arrows sort-desc" id="sort-desc4">
+								<span class="sort-icon sort-asc" id="sort-asc4"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+                                                        <path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg>
+							</span>
+						</span>
+					</span> <span>Endereço</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(5)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc5"><span
+								class="sort-icon sort-asc" id="sort-asc5"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Status</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(6)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc6"><span
+								class="sort-icon sort-asc" id="sort-asc6"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Velocidade</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(7)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc7"><span
+								class="sort-icon sort-asc" id="sort-asc7"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span></span></span>
+						<span>Motorista</span>
+					</th>
+					<th class="th-sm sort-column" onclick="javascript:sortTable(8)">
+						<span class="sort-arrows-container"><span class="sort-arrows sort-desc" id="sort-desc8">
+								<span class="sort-icon sort-asc" id="sort-asc8"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span><span
+								class="sort-icon sort-desc"><svg
+										xmlns="http://www.w3.org/2000/svg" width="292.362"
+										height="292.362" viewBox="0 0 292.362 292.362">
+										<path
+											d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424 C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428 s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279, 290.548,72.998,286.935,69.377z"></path></svg></span>
+						</span></span> <span>Frota</span>
+					</th>
+
+					<th class="th-sm sort-column"><span>Ações <span
+							class="rioglyph rioglyph-question-sign"></span> <span
+							class="table-action-help">Clique no botão abaixo para
+								mostrar as possiveis ações</span>
+					</span></th>
+
+				</tr>
+
+			</thead>
+
+			<tbody id="tablelist">
+
+				<th:foreach th:each="historico : ${listaComHistoricos}">
+
+					<tr th:classappend="${historico.mcName}">
+						<td class="tdCheck">
+							<div class="checkboxWrapper">
+								<label class=""><input type="checkbox" class=""
+									value="on" /> <span class="checkbox-text"></span> </label>
+							</div>
+						</td>
+						<td class="tdCarPlate"><span th:text="${historico.plate}"></span>
+						</td>
+						<td class="tdEvent">
+							<!-- rCode --> <span th:text="${historico.rCode}"></span>
+						</td>
+						<td class="tdDate"><span th:text="${historico.info}"></span>
+						</td>
+						<td class="tdAddress"><span th:if="${historico.addr != null}"
+							th:text="${historico.addr+' - '+historico.city+' - '+historico.st}"></span>
+						</td>
+						<td class="tdStatus"><span th:text="${historico.tStatusDesc}"></span>
+						</td>
+						<td class="tdSpeed"><span th:text="${historico.speed}"></span>
+						</td>
+						<td class="tdDriver"><span th:text="${historico.driver}"></span>
+						</td>
+						<td class="tdDriver"><span th:text="${historico.tBatCg}"></span>
+						</td>
+
+						<td class="tdActions">
+							<button class="btn btn-default btn-icon-only tdActions-Button"
+								th:onclick="'javascript:mostrarOcultar(\'' + ${historico.seqId} +'\',\''+ ${historico.plate} + '\');'">
+								<span class="rioglyph rioglyph-option-horizontal"></span>
+							</button>
+
+						</td>
+
+					</tr>
+					<!-- "trNormal extended hide"  "extended hide trItens" class="esconde" -->
+					<tr th:classappend="${historico.ref}" th:id="${historico.seqId}">
+						<td colspan="10" class="tdCheck">
+							<div class="row">
+								<ul class="list-inline col-md-4">
+									<li>
+										<div>
+											<!-- 
+                                                    <span>Ultima Macro:</span>
+                                                 -->
+											<span th:text="${historico.vType}"></span> <a></a>
+										</div>
+									</li>
+									<li>
+										<div>
+											<span>Outra Informação:</span> <a></a>
+										</div>
+									</li>
+								</ul>
+								<div class="col-md-8">
+									<ul class="list-inline pull-right">
+
+										<li class="tdActions-item">
+											<!--IF -->
+											<div th:if="${historico.plate} == 'MAN1234' ">
+													<button
+														class="dropdown-toggle btn btn-default btn-actions-siren position-relative btn-bloquear	"
+														th:onclick="'javascript:bloquearVeiculo(\''+ ${historico.plate} +'\',\''+ ${historico.mcName} +'\');'">
+														<i class="fas fa-lock"></i> Bloquear Veiculo
+														<div id="popover-basic" role="tooltip"
+															class="popover left">
+															<div class="arrow"></div>
+															<div class="popover-content">Bloquear Veiculo</div>
+														</div>
+													</button>
+											</div> 
+											<!-- ELSE -->
+											<div th:unless="${historico.plate} == 'MAN1234' ">
+												<button onclick="avisaVeiculoNaoAutorizado()"
+													class="dropdown-toggle btn btn-default btn-actions-siren position-relative">
+													<i class="fas fa-lock"></i> Bloquear Veiculo
+												</button>
+											</div> 
+
+										</li>
+
+
+										<li class="tdActions-item">
+											<!--IF -->
+											<div th:if="${historico.plate} == 'MAN1234' ">
+													<button class="dropdown-toggle btn btn-default btn-actions-siren position-relative"
+														th:onclick="'javascript:ativarSirene(\''+ ${historico.plate} +'\',\''+ ${historico.mcName} +'\');'">
+														<i class="fas fa-bell"></i> Ativar Sirene
+														<div id="popover-basic" role="tooltip"
+															class="popover left">
+															<div class="arrow"></div>
+															<div class="popover-content">Sirene Ativada!</div>
+														</div>
+													</button>
+											</div> 
+											<!-- ELSE -->
+											<div th:unless="${historico.plate} == 'MAN1234' ">
+												<button onclick="avisaVeiculoNaoAutorizado()"
+													class="dropdown-toggle btn btn-default btn-actions-siren position-relative">
+													<i class="fas fa-bell"></i> Ativar Sirene
+												</button>
+											</div> 
+
+										</li>
+										<li class="tdActions-item">
+											<button class="dropdown-toggle btn btn-default btn-actions-resolve"
+													th:onclick="'javascript:removeItemClicado(\''+ ${historico.plate} +'\',\''+ ${historico.mcName} +'\');'">
+						
+													<i class="far fa-check-circle"></i> 
+													<i class="fas fa-check-circle hide"></i> 
+													Resolver
+											</button>
+										</li>
+										<li class="tdActions-item">
+											<button class="dropdown-toggle btn btn-default btn-actions-message"
+													onclick="javascript:enviarMsg(event)">
+													<i class="fas fa-envelope"></i> 
+													Enviar Mensagem
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</td>
+					</tr>
+
+				</th:foreach>
+
+			</tbody>
+		</table>
+
+
+	</div>
+
+</body>
+</html>

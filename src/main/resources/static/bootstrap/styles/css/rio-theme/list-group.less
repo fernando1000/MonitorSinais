@@ -1,0 +1,43 @@
+// List Group
+
+/*
+ * Bootstrap variables
+ */
+@list-group-bg: #fff;
+@list-group-border: @gray-light;
+@list-group-border-radius: @border-radius-base;
+@list-group-hover-bg: @gray-light;//#f5f5f5;
+@list-group-active-color: #fff;
+@list-group-active-bg: @component-active-bg;
+@list-group-active-border: @list-group-active-bg;
+@list-group-active-text-color: lighten(@list-group-active-bg, 40%);
+@list-group-link-color: @gray-base;
+@list-group-link-heading-color: @gray-base;
+
+// Custom variables
+@dim-list-group-item-indicator-width: 5px;
+
+.list-group-item {
+  background-color: #ffffff;
+  transition: all 70ms ease-in-out;
+
+  &-primary {
+    box-shadow: inset @dim-list-group-item-indicator-width 0 0 0 @brand-primary;
+  }
+
+  &-success {
+    box-shadow: inset @dim-list-group-item-indicator-width 0 0 0 @brand-success;
+  }
+
+  &-danger {
+    box-shadow: inset @dim-list-group-item-indicator-width 0 0 0 @brand-danger;
+  }
+
+  &-warning {
+    box-shadow: inset @dim-list-group-item-indicator-width 0 0 0 @brand-warning;
+  }
+
+  &-info {
+    box-shadow: inset @dim-list-group-item-indicator-width 0 0 0 @brand-info;
+  }
+}

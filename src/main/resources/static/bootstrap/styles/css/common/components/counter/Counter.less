@@ -1,0 +1,117 @@
+.counter {
+  counter-reset: rio-counter;
+
+  @counterSizeSmall: 30px;
+  @counterSizeNormal: 40px;
+  @counterSizeLarge: 50px;
+
+  > * {
+    display: flex;
+    align-items: center;
+    flex: 1 0 auto;
+    position: relative;
+
+    &:before {
+      content: counter(rio-counter);
+      counter-increment: rio-counter;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-style: solid;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.size-small {
+    > * {
+      padding-left: @counterSizeSmall * 1.25;
+      margin-bottom: @counterSizeSmall * 0.5;
+      min-height: @counterSizeSmall;
+  
+      &:before {
+        font-size: @counterSizeSmall * 0.5;
+        line-height: @counterSizeSmall * 0.5;
+        width: @counterSizeSmall;
+        height: @counterSizeSmall;
+        border-size: 2px;
+        border-radius: @counterSizeSmall;
+        margin-right: @counterSizeSmall * 0.5;
+      }
+    }
+  }
+
+  &:not([class*="size-"]) {
+    > * {
+      padding-left: @counterSizeNormal * 1.25;
+      margin-bottom: @counterSizeNormal * 0.5;
+      min-height: @counterSizeNormal;
+  
+      &:before {
+        font-size: @counterSizeNormal * 0.5;
+        line-height: @counterSizeNormal * 0.5;
+        width: @counterSizeNormal;
+        height: @counterSizeNormal;
+        border-size: 2px;
+        border-radius: @counterSizeNormal;
+        margin-right: @counterSizeNormal * 0.5;
+      }
+    }
+  }
+
+  &.size-large {
+    > * {
+      padding-left: @counterSizeLarge * 1.25;
+      margin-bottom: @counterSizeLarge * 0.5;
+      min-height: @counterSizeLarge;
+  
+      &:before {
+        font-size: @counterSizeLarge * 0.5;
+        line-height: @counterSizeLarge * 0.5;
+        width: @counterSizeLarge;
+        height: @counterSizeLarge;
+        border-size: 2px;
+        border-radius: @counterSizeLarge;
+        margin-right: @counterSizeLarge * 0.5;
+      }
+    }
+  }
+
+  &:not([class*="color-"]), &.color-gray {
+    > * {
+      &:before {
+        color: @gray;
+        border-color: @gray;
+      }
+    }
+    &.filled {
+      > * {
+        &:before {
+          background-color: @gray;
+          border: none;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  &.color-highlight {
+    > * {
+      &:before {
+        color: @color-highlight;
+        border-color: @color-highlight;
+      }
+    }
+    &.filled {
+      > * {
+        &:before {
+          background-color: @color-highlight;
+          border: none;
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.splitResizerWrapper {
+  position: relative;
+}
+
+.splitResizer {
+  display: table;
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 6px;
+  height: 100%;
+  background-color: @gray-light;
+  cursor: ew-resize;
+
+  .splitResizerAlignmentBox {
+    display: table-cell;
+    height: 100%;
+    verticalAlign: middle;
+  }
+}

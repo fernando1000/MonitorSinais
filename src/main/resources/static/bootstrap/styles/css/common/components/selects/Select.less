@@ -1,0 +1,97 @@
+.select {
+
+  &:focus {
+    outline: 0;
+  }
+
+  .placeholder {
+    color: @gray;
+  }
+
+  .dropdown-toggle {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: space-between;
+
+    > span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      display: block;
+      margin-right: 0.3em;
+    }
+  }
+
+  .input-lg {
+    .dropdown-menu {
+      top: @input-height-large;
+    }
+  }
+
+  .input-sm {
+    .dropdown-menu {
+      top: @input-height-small;
+    }
+  }
+
+  .dropdown-menu {
+    max-height: @dropdown-max-height;
+    overflow-x: hidden;
+
+    svg {
+      vertical-align: middle;
+      margin-right: 0.5em;
+    }
+
+    > li.active {
+      > a:before {
+        .rioglyph();
+        content: @rioglyph-ok;
+        font-family: @icon-font-name;
+        font-size: 12px;
+        position: relative;
+        left: -5px;
+      }
+    }
+  }
+}
+
+.input-group-btn > .select.dropdown.open {
+  .dropdown-menu {
+    top: @input-height-base;
+  }
+}
+
+// default html5 select styling
+@selectArrowColor: escape('@{gray-dark}');
+select {
+  .form-control;
+
+  // disable default appearance
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &::-ms-expand { display: none };
+
+  &:focus {
+    box-shadow: none;
+    border: 1px solid @input-border;
+  }
+
+  &:not([multiple]) {
+    background-image: url(~"data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%22111%22%20height%3D%2271%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.arrow%7Bfill%3A@{selectArrowColor}%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22arrow%22%20fill-rule%3D%22nonzero%22%20d%3D%22M55.5%2071L0%2015.546%2015.563%200%2055.5%2039.878%2095.437%200%20111%2015.546z%22%2F%3E%3C%2Fsvg%3E");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: auto 25%;
+    padding-right: 30px;
+
+    &:focus {
+      box-shadow: none;
+      border: 1px solid @input-border;
+      background-image: url(~"data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%22111%22%20height%3D%2271%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.arrow%7Bfill%3A@{selectArrowColor}%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22arrow%22%20fill-rule%3D%22nonzero%22%20d%3D%22M55.5%200L0%2055.454%2015.563%2071%2055.5%2031.122%2095.437%2071%20111%2055.454z%22%2F%3E%3C%2Fsvg%3E%0A");
+    }
+  }
+}

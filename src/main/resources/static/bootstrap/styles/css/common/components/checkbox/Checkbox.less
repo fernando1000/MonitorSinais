@@ -1,0 +1,108 @@
+@dim-checkbox-size-default: 16px;
+@dim-checkbox-size-large: 20px;
+
+@color-disabled-inverted: darken(@gray-darker, 20%);
+
+.checkbox {
+  label {
+    padding-left: 0;
+  }
+}
+
+.checkbox-inline {
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+
+  + .checkbox-text {
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  + .checkbox-text:before {
+    display: inline-block;
+    position: relative;
+    height: @dim-checkbox-size-default;
+    width: @dim-checkbox-size-default;
+    border: 1px solid @gray;
+    background-color: transparent;
+    top: -2px;
+    font-family: @icon-font-name;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    content: "";
+    margin-right: 5px;
+    vertical-align: middle;
+    text-align: left;
+  }
+
+  // Define style for 'checked' state
+  &:checked + .checkbox-text:before {
+    .rioglyph();
+    content: @rioglyph-ok;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 88%;
+    color: white;
+    border-color: @brand-primary;
+    background-color: @brand-primary;
+    animation: checkbox-tick 100ms ease-in;
+  }
+
+  &.no-animation + .checkbox-text:before {
+    animation: none;
+  }
+
+  // Define style for 'diabled' state
+  &:disabled + .checkbox-text {
+    color: @gray-light;
+    cursor: not-allowed;
+
+    &:before {
+      border-color: @gray-light;
+      background-color: @gray-light;
+    }
+  }
+
+  // indeterminate state is used in combination with other checkboxes
+  // where they have different selection state
+  &:indeterminate + .checkbox-text:before {
+    .rioglyph();
+    content: @rioglyph-minus-light;
+    color: white;
+    border-color: @brand-primary;
+    background-color: @brand-primary;
+  }
+
+  // Define colors for error case
+  &.error + .checkbox-text {
+    &:before {
+      border-color: @brand-danger;
+    }
+  }
+
+  // Define larger size for checkbox only
+  &.large + .checkbox-text:before {
+    height: @dim-checkbox-size-large;
+    width: @dim-checkbox-size-large;
+    font-size: 16px;
+  }
+}
+
+@keyframes checkbox-tick {
+  0% {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,67 @@
+// Callouts
+
+// Custom variables
+@dim-callout-indicator-width: 5px;
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 1px solid @gray-light;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  & + .bs-callout {
+    margin-top: -5px;
+  }
+
+  &-default {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @gray-dark;
+    h4 {
+      color: @gray-dark;
+    }
+  }
+
+  &-primary {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @brand-primary;
+     h4 {
+      color: @brand-primary;
+    }
+  }
+
+  &-success {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @brand-success;
+    h4 {
+      color: @brand-success;
+    }
+  }
+
+  &-danger {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @brand-danger;
+    h4 {
+      color: @brand-danger;
+    }
+  }
+
+  &-warning {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @brand-warning;
+    h4 {
+      color: @brand-warning;
+    }
+  }
+
+  &-info {
+    box-shadow: inset @dim-callout-indicator-width 0 0 0 @brand-info;
+    h4 {
+      color: @brand-info;
+    }
+  }
+}

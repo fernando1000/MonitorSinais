@@ -1,0 +1,76 @@
+@import (css) "./DatePickerBase.css";
+
+// Custom DatePicker / DateRangePicker Styles go here
+
+.DatePicker {
+    position: relative;
+    min-width: 200px;
+
+    &:before {
+      .rioglyph();
+      content: @rioglyph-calendar;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      font-size: 150%;
+      height: 100%;
+      color: @gray-dark;
+      padding: 0 5px;
+    }
+
+    > .form-control {
+      padding-left: 2.2em;
+    }
+
+    .rdtPicker {
+        td.rdtDay,
+        td.rdtHour,
+        td.rdtMinute,
+        td.rdtSecond,
+        .rdtTimeToggle {
+            &:hover {
+                background: @gray-light;
+            }
+        }
+
+        td.rdtActive,
+        td.rdtActive:hover  {
+            background: @brand-primary;
+        }
+    }
+}
+
+.DateRangePicker {
+    .select {
+        .dropdown-menu {
+            overflow: visible;
+            max-height: none;
+        }
+    }
+
+    .custom-panel {
+        padding: 15px 20px 0px;
+        min-width: 600px;
+
+        .DatePicker::before {
+            height: 34px;
+        }
+
+        .rdtPicker {
+            display: block;
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    .custom-panel-buttons {
+        padding: 0px 20px 15px;
+    }
+
+    &.dropLeft {
+        .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+    }
+}
